@@ -10,7 +10,8 @@ ShouMedia
 
 `开发语言`
 
-* 基于jQuery2.0.0开发，使用[做模块加载](https://github.com/requirejs/requirejs)
+* 基于jQuery2.0.0开发，使用[require.js](https://github.com/requirejs/requirejs)
+* identicon 头像使用[blockies.js](https://github.com/download13/blockies)
 * 后端基于PHP开发
 * CSS @media query 做了三个适配300px-320px 320px-400px 400-768px 768px
 
