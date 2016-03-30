@@ -16,6 +16,7 @@ $RECYCLE.BIN/
 /ser/conn.php
 /ser/xszcconn.php
 # Windows shortcuts
+api.js
 *.lnk
 
 # =========================
