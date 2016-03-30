@@ -1,0 +1,720 @@
+* {
+	padding: 0px;
+	margin: 0px;
+	border: 0px;
+	font-family: "微软雅黑";
+	list-style-type: none;
+	cursor: pointer;
+	font-weight: 100;
+}
+input{
+	cursor: auto;
+}
+.attention {
+	z-index: 99;
+	width: 100%;
+	background-color: rgb(96, 125, 139);
+	text-align: center;
+	padding-top: 150px;
+	font-size: 2em;
+	color: rgb(199, 205, 208);
+	position: fixed;
+}
+
+.cover {
+	z-index: 95;
+	width: 100%;
+	background-color: transparent;
+	height: 1000px;
+	position: fixed;
+	display: none;
+}
+
+.alert {
+	z-index: 96;
+	width: 70%;
+	top: 160px;
+	left: 15%;
+	min-height: 160px;
+	background-color: rgb(199, 205, 208);
+	position: fixed;
+	box-shadow: -1px 8px 10px grey;
+	text-align: center;
+	color: rgb(96, 125, 139);
+	padding-top: 5px;
+	padding-bottom: 5px;
+	border: 2px solid rgb(69, 90, 100);
+	border-radius: 4px;
+	display: none;
+}
+
+.alertTitle {
+	font-size: 1.2em;
+	height: 1.2em;
+	line-height: 1.2em;
+	margin-bottom: 5px;
+}
+
+.alertContent {
+	width: 96%;
+	border-top: 2px solid rgba(69, 90, 100, 0.8);
+	font-size: 1em;
+	min-height: 80px;
+	background-color: transparent;
+	padding-top: 5px;
+	color: rgba(69, 90, 100, 0.5);
+	text-align: left;
+	padding-left: 2%;
+	padding-right: 2%;
+	text-indent: 2em;
+}
+
+.ok {
+	width: 40%;
+	height: 30px;
+	opacity: 0.4;
+	margin-top: 9px;
+	border-radius: 4px;
+	border: 1px solid rgb(69, 90, 100);
+}
+
+.loading {
+	height: 2px;
+	background-color: #8aacbd;
+	width: 10%;
+	display: inherit;
+}
+
+.loadingBack {
+	height: 2px;
+	background-color: rgb(96, 125, 139);
+	display: block;
+	display: none;
+}
+.hearder {
+	width: 100%;
+	height: 50px;
+	background-color: rgb(69, 90, 100);
+	line-height: 50px;
+	color: rgb(199, 205, 208);
+	text-align: center;
+}
+
+.hearder span:first-child {
+	float: left;
+	display: none;
+}
+
+.hearder span:last-child {
+	float: right;
+}
+
+.content {
+	width: 100%;
+}
+
+.function {
+	text-align: center;
+	color: rgb(96, 125, 139);
+}
+
+
+.function img{
+	width: 30%;
+	margin-left: 35%;
+	margin-right: 35%;
+	margin-top: 25px;
+	margin-bottom: 25px;
+}
+
+
+/*大屏幕开始*/
+
+.container {
+	overflow: hidden;
+}
+
+@media only screen and (min-width: 768px) {
+	.alert{
+		width: 50%;
+		left: 25%;
+	}
+	.container {
+		width: 768px;
+		margin: 0px auto 0px auto;
+	}
+	.attention {
+		display: none;
+	}
+	.topBar {
+		width: 100%;
+		height: 200px;
+		background-color: rgb(96, 125, 139);
+	}
+	.topBarLeft {
+		color: rgb(199, 205, 208);
+		float: left;
+	}
+	.topBarLeftFirst {
+		float: left;
+		width: 120px;
+		height: 120px;
+		border-radius: 50%;
+		border: 2px solid rgb(199, 205, 208);
+		margin: 38px 0px 38px 55px;
+	}
+	canvas{
+		position: relative;
+		top: 25px;
+		left: 25px;
+	}
+	.topBarLeftFirst img{
+		position: relative;
+		top: 10px;
+		left: 10px;
+		width: 100px;
+	}
+	.topBarLeftSecond ,#login{
+		float: left;
+		height: 200px;
+		line-height: 200px;
+		margin-left: 40px;
+	}
+	.topBarLeftThird {
+		float: left;
+		height: 200px;
+		line-height: 200px;
+		margin-left: 60px;
+		font-size: 1.5em;
+		font-weight: 100;
+	}
+	.topBarRight {
+		color: rgb(199, 205, 208);
+		float: right;
+		height: 120px;
+		margin: 40px 40px 40px 20px;
+	}
+	.topBarRightFirst,
+	.topBarRightThird,
+	.topBarRightSecond {
+		height: 40px;
+		line-height: 40px;
+	}
+	.function {
+		float: left;
+		height: 170px;
+		padding-top: 10px;
+		border-color: gainsboro;
+		border-style: solid;
+	}
+	.function:last-child img,.function:nth-child(9) img{
+		width: 14%;
+		margin-left: 43%;
+		margin-right: 43%;
+	}
+	.function:nth-child(1) {
+		border-width: 0px 1px 1px 0px;
+		width: 24%;
+	}
+	.function:nth-child(2) {
+		border-width: 0px 1px 1px 0px;
+		width: 25%;
+	}
+	.function:nth-child(3) {
+		border-width: 0px 0px 1px 0px;
+		width: 25%;
+	}
+	.function:nth-child(4) {
+		border-width: 0px 0px 1px 1px;
+		width: 24%;
+	}
+	.function:nth-child(5) {
+		border-width: 0px 1px 1px 0px;
+		width: 24%;
+	}
+	.function:nth-child(6) {
+		border-width: 0px 1px 1px 0px;
+		width: 25%;
+	}
+	.function:nth-child(7) {
+		border-width: 0px 0px 1px 0px;
+		width: 25%;
+	}
+	.function:nth-child(8) {
+		border-width: 0px 0px 1px 1px;
+		width: 24%;
+	}
+	.function:nth-child(9) {
+		border-width: 0px 1px 1px 0px;
+		width: 49%;
+	}
+	.function:nth-child(10) {
+		border-width: 0px 0px 1px 0px;
+		width:50%;
+	}
+}
+
+
+/*大屏幕结束  手机--大屏幕开始*/
+
+@media only screen and (min-width: 400px) and (max-width: 768px) {
+	.container {
+		width: 100%;
+		margin: 0px;
+	}
+	.attention {
+		display: none;
+	}
+	.topBar {
+		width: 100%;
+		height: 200px;
+		background-color: rgb(96, 125, 139);
+	}
+	.topBarLeft {
+		color: rgb(199, 205, 208);
+		float: left;
+	}
+	.topBarLeftFirst {
+		float: left;
+		width: 120px;
+		height: 120px;
+		border-radius: 50%;
+		border: 2px solid rgb(199, 205, 208);
+		margin: 38px 0px 38px 25px;
+	}
+	canvas{
+		position: relative;
+		top: 25px;
+		left: 25px;
+	}
+	.topBarLeftFirst img{
+		position: relative;
+		top: 10px;
+		left: 10px;
+		width: 100px;
+	}
+	.topBarLeftSecond,#login{
+		float: left;
+		height: 200px;
+		line-height: 200px;
+		margin-left: 20px;
+	}
+	.topBarLeftThird {
+		float: left;
+		height: 200px;
+		line-height: 200px;
+		margin-left: 20px;
+		font-size: 1.5em;
+		font-weight: 100;
+	}
+	.topBarRight {
+		color: rgb(199, 205, 208);
+		float: right;
+		height: 120px;
+		margin: 40px 10px 40px 10px;
+	}
+	.topBarRightFirst,
+	.topBarRightThird,
+	.topBarRightSecond {
+		height: 40px;
+		line-height: 40px;
+	}
+	.function {
+		float: left;
+		width: 33%;
+		height: 155px;
+		border-color: gainsboro;
+		border-style: solid;
+	}
+	.function:last-child img {
+		width: 14%;
+		margin-left: 43%;
+		margin-right: 43%;
+	}
+	.function:nth-child(1) {
+		border-width: 0px 1px 1px 0px;
+	}
+	.function:nth-child(2) {
+		border-width: 0px 0px 1px 0px;
+	}
+	.function:nth-child(3) {
+		border-width: 0px 0px 1px 1px;
+	}
+	.function:nth-child(4) {
+		border-width: 0px 1px 1px 0px;
+	}
+	.function:nth-child(5) {
+		border-width: 0px 0px 1px 0px;
+	}
+	.function:nth-child(6) {
+		border-width: 0px 0px 1px 1px;
+	}
+	.function:nth-child(7) {
+		border-width: 0px 1px 1px 0px;
+	}
+	.function:nth-child(8) {
+		border-width: 0px 0px 1px 0px;
+	}
+	.function:nth-child(9) {
+		border-width: 0px 0px 1px 1px;
+	}
+	.function:nth-child(10) {
+		width: 99%;
+	}
+}
+
+
+/*手机-大屏幕结束  手机-小屏幕开始*/
+
+@media only screen and (min-width: 320px) and (max-width: 400px) {
+	.container {
+		width: 100%;
+		margin: 0px;
+	}
+	.attention {
+		display: none;
+	}
+	.topBar {
+		width: 100%;
+		height: 160px;
+		background-color: rgb(96, 125, 139);
+	}
+	.topBarLeft {
+		color: rgb(199, 205, 208);
+		float: left;
+		height: 160px;
+	}
+	.topBarLeftFirst {
+		float: left;
+		width: 100px;
+		height: 100px;
+		border-radius: 50%;
+		border: 2px solid rgb(199, 205, 208);
+		margin: 28px 0px 28px 15px;
+	}
+	canvas{
+		position: relative;
+		top: 15px;
+		left: 15px;
+	}
+	.topBarLeftFirst img{
+		position: relative;
+		top: 10px;
+		left: 10px;
+		width: 80px;
+	}
+	.topBarLeftSecond,#login{
+		float: left;
+		height: 160px;
+		line-height: 160px;
+		margin-left: 5px;
+	}
+	.topBarLeftThird {
+		float: left;
+		height: 160px;
+		line-height: 160px;
+		margin-left: 10px;
+		font-size: 1.5em;
+		font-weight: 100;
+	}
+	.topBarRight {
+		color: rgb(199, 205, 208);
+		float: right;
+		height: 120px;
+		margin: 20px 10px 20px 5px;
+	}
+	.topBarRightFirst,
+	.topBarRightThird,
+	.topBarRightSecond {
+		height: 40px;
+		line-height: 40px;
+	}
+	.function {
+		float: left;
+		width: 49%;
+		height: 140px;
+		border-color: gainsboro;
+		border-style: solid;
+	}
+	.function:nth-child(1) {
+		border-width: 0px 1px 1px 0px;
+	}
+	.function:nth-child(2) {
+		border-width: 0px 0px 1px 0px;
+	}
+	.function:nth-child(3) {
+		border-width: 0px 1px 1px 0px;
+	}
+	.function:nth-child(4) {
+		border-width: 0px 0px 1px 0px;
+	}
+	.function:nth-child(5) {
+		border-width: 0px 1px 1px 0px;
+	}
+	.function:nth-child(6) {
+		border-width: 0px 0px 1px 0px;
+	}
+	.function:nth-child(7) {
+		border-width: 0px 1px 1px 0px;
+	}
+	.function:nth-child(8) {
+		border-width: 0px 0px 1px 0px;
+	}
+	.function:nth-child(9) {
+		border-width: 0px 1px 1px 0px;
+	}
+	.function:nth-child(10) {
+		border-width: 0px 0px 1px 0px;
+	}
+}
+
+
+/*手机小屏幕结束  以下不兼容*/
+
+@media only screen and(max-width: 320px) {
+	.attention {
+		display: block;
+	}
+}
+
+
+/*综合index*/
+
+.index {
+	overflow: auto;
+	background-color: rgb(96, 125, 139);
+}
+
+
+/*默认页面*/
+
+.mainIndex {
+	/*display: none;*/
+}
+
+
+/*登录页面*/
+
+.loginIndex {
+	text-align: center;
+	display: none;
+}
+
+.loginIndex input {
+	width: 70%;
+	background-color: transparent;
+	border: 1px solid rgb(199, 205, 208);
+	height: 50px;
+	color: rgb(199, 205, 208);
+	border-radius: 20px;
+	padding-left: 15px;
+	font-size: 1em;
+	margin-bottom: 20px;
+}
+
+.loginIndex p {
+	color: rgb(199, 205, 208);
+	padding-top: 50px;
+	padding-bottom: 30px;
+	font-size: 2.5em;
+	font-weight: 100;
+}
+
+#loginSubmit {
+	width: 70%;
+	height: 50px;
+	background-color: rgba(255, 255, 255, 0.1);
+	border: 1px solid rgb(199, 205, 208);
+	font-size: 1.2em;
+	color: rgb(199, 205, 208);
+	border-radius: 20px;
+	margin: 15px 0px 500px 0px;
+}
+
+
+/*一卡通页面*/
+
+.cardIndex {
+	display: none;
+}
+
+.cardUl {
+	width: 100%;
+	margin-top: 10px;
+	height: 50px;
+	margin-bottom: 10px;
+}
+
+.cardUl li {
+	float: left;
+	width: 33%;
+	text-align: center;
+	cursor: pointer;
+	color: rgb(199, 208, 208);
+	font-size: 1.1em;
+	height: 25px;
+	line-height: 25px;
+	border-bottom: 10px solid transparent;
+	border-top: 10px solid transparent;
+}
+
+.cardUlClass {
+	text-shadow: 0px 1px 3px rgba(199, 205, 208, 0.5);
+}
+.cardUl li:nth-child(2){
+	border-left: 1px solid rgb(199, 205, 208);
+}
+.cardUl li:last-child {
+	border-left: 1px solid rgb(199, 205, 208);
+}
+
+.cardDetail {
+	width: 72%;
+	margin: 40px auto 15px auto;
+	padding-left: 4%;
+	padding-right: 4%;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	text-align: left;
+	background-color: rgb(199,205,208);
+	color: rgb(96,125,139);
+	font-size: 1.1em;
+	/*display: none;*/
+}
+
+.cardCost {
+	display: none;
+	text-align: center;
+	color: rgb(199, 205, 208);
+}
+
+.cardAdd {
+	display: none;
+	text-align: center;
+	color: rgb(199, 205, 208);
+}
+
+.cardCost input,
+.cardAdd input {
+	width: 30%;
+	height: 30px;
+	background-color: transparent;
+	border: 1px solid rgb(199, 205, 208);
+	border-radius: 10px;
+	color: rgb(199, 205, 208);
+}
+
+.cardCost button,
+.cardAdd button {
+	width: 30px;
+	height: 30px;
+	color: inherit;
+	border-radius: 10px;
+	background-color: transparent;
+	border: 1px solid rgb(199, 205, 208);
+	line-height: 30px;
+	position: relative;
+	top: 1px;
+}
+
+.cardCost ul,
+.cardAdd ul {
+	margin-top: 10px;
+	margin-left: auto;
+	margin-right: auto;
+	padding-bottom: 10px;
+	border-bottom: 1px solid rgba(199, 205, 208, 0.5);
+}
+
+.cardCost ul li,
+.cardAdd ul li {
+	text-align: left;
+	color: rgba(199, 205, 208, 0.8);
+	height: 25px;
+	font-weight: 100;
+	padding-left: 10px;
+}
+
+
+/*成绩查询*/
+
+.achievementIndex {
+	display: none;
+}
+
+.achievementIndex ul,
+.addressIndex ul {
+	background-color: white;
+	width: 80%;
+	margin: 20px auto 0px auto;
+	padding: 10px;
+	border-radius: 3px;
+	color: rgb(96, 125, 139);
+}
+
+.achievementIndex ul li,
+.addressIndex ul li {
+	width: 90%;
+	height: 1.5em;
+	margin: 0px auto 0px auto;
+}
+
+.achievementIndex ul li:first-child,
+.addressIndex ul li:first-child {
+	text-align: center;
+	height: 1.7em;
+	font-size: 1.2em;
+}
+
+.achievementIndex ul li:nth-child(2),
+.addressIndex ul li:nth-child(2) {
+	width: 80%;
+	height: 3px;
+	margin: 0px auto 10px auto;
+	border-top-width: 0px;
+	border-right-width: 20px;
+	border-left-width: 20px;
+	border-bottom-width: 1px;
+	border-color: transparent;
+	border-bottom-color: rgb(96, 125, 139);
+	border-style: solid;
+}
+
+.addressIndex {
+	display: none;
+	text-align: center;
+}
+
+.addressIndex input {
+	width: 60%;
+	height: 35px;
+	padding-right: 50px;
+	margin-top: 25px;
+	margin-left: 52px;
+	background-color: transparent;
+	border: 1px solid rgb(199, 205, 208);
+	border-radius: 3px;
+	color: rgb(199, 205, 208);
+	padding-left: 10px;
+	font-size: 1em;
+}
+
+.addressIndex span {
+	position: relative;
+	right: 65px;
+	color: rgba(199, 205, 208, 0.5);
+	height: 32px;
+	line-height: 32px;
+	border-left: 1px solid rgba(199, 205, 208, 0.5);
+	padding-left: 5px;
+}
+
+.addressIndex ul {
+	background-color: transparent;
+	border: 1px solid rgb(199, 205, 208);
+	color: rgb(199, 205, 208);
+}
+
+.addressIndex ul li:nth-child(2) {
+	border-bottom-color: rgb(199, 205, 208);
+}
