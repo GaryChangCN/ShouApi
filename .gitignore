@@ -18,6 +18,7 @@ $RECYCLE.BIN/
 # Windows shortcuts
 api.js
 *.lnk
+*.project
 
 # =========================
 # Operating System Files
