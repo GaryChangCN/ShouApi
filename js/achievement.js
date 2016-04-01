@@ -6,9 +6,9 @@
 		bMin = b.getTime();
 		if (localStorage.achievementHour > 22 || localStorage.achievementHour <= 5) {
 			locationJSON();
-		} else if (bMin = localStorage.achievementTime > 1800000) {
+		} else if (bMin - localStorage.achievementTime > 1800000) {
 			getAchievementJSON();
-		}else{
+		} else {
 			locationJSON();
 		}
 	} else {
@@ -61,4 +61,5 @@
 			}
 		});
 	}
+
 })();
