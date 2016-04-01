@@ -121,7 +121,6 @@
 			}
 		})
 	})
-
 	function information() {
 		$.ajax({
 			type: "get",
