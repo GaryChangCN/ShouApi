@@ -7,9 +7,11 @@
 	cursor: pointer;
 	font-weight: 100;
 }
-input{
+
+input {
 	cursor: auto;
 }
+
 .attention {
 	z-index: 99;
 	width: 100%;
@@ -91,6 +93,7 @@ input{
 	display: block;
 	display: none;
 }
+
 .hearder {
 	width: 100%;
 	height: 50px;
@@ -100,14 +103,105 @@ input{
 	text-align: center;
 }
 
-.hearder span:first-child {
+#back {
 	float: left;
+}
+
+#goBack::before {
+	content: "";
+	border: 10px solid transparent;
+	border-right-color: rgb(199, 205, 208);
+	display: inline-block;
+	position: relative;
+	top: 4px;
+}
+
+#goBack::after {
+	content: "";
+	border: 10px solid transparent;
+	border-right-color: rgb(69, 90, 100);
+	display: inline-block;
+	position: relative;
+	right: 17px;
+	top: 4px;
+}
+
+#goBack {
 	display: none;
 }
 
-.hearder span:last-child {
+#about {
+	/*display: none;*/
+}
+
+#about::before {
+	content: "";
+	width: 16px;
+	height: 16px;
+	border-radius: 50%;
+	border: 2px solid rgb(199, 205, 208);
+	position: relative;
+	top: 4px;
+	left: 12px;
+	display: inline-block;
+}
+
+#about::after {
+	content: "¡";
+	position: relative;
+	right: 0.5px;
+	font-weight: 400;
+	bottom: 3px;
+}
+
+#title {
+	font-size: 1.2em;
+}
+
+#refresh {
 	float: right;
 }
+
+#repeat::before {
+	width: 16px;
+	height: 16px;
+	content: "";
+	border: 2px solid rgb(199, 205, 208);
+	display: inline-block;
+	border-radius: 50%;
+	position: relative;
+	top: 3px;
+}
+
+#repeat::after {
+	content: "";
+	border: 4px solid rgb(69, 90, 100);
+	border-right-color: rgb(199, 205, 208);
+	display: inline-block;
+	position: relative;
+	right: 18px;
+	top: 6px;
+}
+
+
+/*.repeat:before {
+	width: 9px;
+	height: 9px;
+	border: 3px solid #c55500;
+	background: transparent;
+	border-radius: 50%;
+	content: "";
+}
+
+.repeat:after {
+	left: 9px;
+	border: 4px solid #fff;
+	border-width: 5px 2px 5px 5px;
+	border-left-color: #c55500;
+	margin: -9px 0 0;
+	background: transparent;
+	content: "";
+}*/
 
 .content {
 	width: 100%;
@@ -118,8 +212,7 @@ input{
 	color: rgb(96, 125, 139);
 }
 
-
-.function img{
+.function img {
 	width: 30%;
 	margin-left: 35%;
 	margin-right: 35%;
@@ -135,7 +228,7 @@ input{
 }
 
 @media only screen and (min-width: 768px) {
-	.alert{
+	.alert {
 		width: 50%;
 		left: 25%;
 	}
@@ -163,18 +256,19 @@ input{
 		border: 2px solid rgb(199, 205, 208);
 		margin: 38px 0px 38px 55px;
 	}
-	canvas{
+	canvas {
 		position: relative;
 		top: 25px;
 		left: 25px;
 	}
-	.topBarLeftFirst img{
+	.topBarLeftFirst img {
 		position: relative;
 		top: 10px;
 		left: 10px;
 		width: 100px;
 	}
-	.topBarLeftSecond ,#login{
+	.topBarLeftSecond,
+	#login {
 		float: left;
 		height: 200px;
 		line-height: 200px;
@@ -185,8 +279,24 @@ input{
 		height: 200px;
 		line-height: 200px;
 		margin-left: 60px;
-		font-size: 1.5em;
-		font-weight: 100;
+	}
+	#logOut::before {
+		content: "";
+		border: 10px solid transparent;
+		display: inline-block;
+		border-left-color: rgb(199, 205, 208);
+		position: relative;
+		top: 5px;
+		left: 40px;
+	}
+	#logOut::after {
+		content: "";
+		border: 10px solid transparent;
+		border-left-color: rgb(96, 125, 139);
+		display: inline-block;
+		position: relative;
+		left: 17px;
+		top: 5px;
 	}
 	.topBarRight {
 		color: rgb(199, 205, 208);
@@ -207,7 +317,8 @@ input{
 		border-color: gainsboro;
 		border-style: solid;
 	}
-	.function:last-child img,.function:nth-child(9) img{
+	.function:last-child img,
+	.function:nth-child(9) img {
 		width: 14%;
 		margin-left: 43%;
 		margin-right: 43%;
@@ -250,7 +361,7 @@ input{
 	}
 	.function:nth-child(10) {
 		border-width: 0px 0px 1px 0px;
-		width:50%;
+		width: 50%;
 	}
 }
 
@@ -282,18 +393,19 @@ input{
 		border: 2px solid rgb(199, 205, 208);
 		margin: 38px 0px 38px 25px;
 	}
-	canvas{
+	canvas {
 		position: relative;
 		top: 25px;
 		left: 25px;
 	}
-	.topBarLeftFirst img{
+	.topBarLeftFirst img {
 		position: relative;
 		top: 10px;
 		left: 10px;
 		width: 100px;
 	}
-	.topBarLeftSecond,#login{
+	.topBarLeftSecond,
+	#login {
 		float: left;
 		height: 200px;
 		line-height: 200px;
@@ -304,8 +416,24 @@ input{
 		height: 200px;
 		line-height: 200px;
 		margin-left: 20px;
-		font-size: 1.5em;
-		font-weight: 100;
+	}
+	#logOut::before {
+		content: "";
+		border: 10px solid transparent;
+		display: inline-block;
+		border-left-color: rgb(199, 205, 208);
+		position: relative;
+		top: 5px;
+		left: 30px;
+	}
+	#logOut::after {
+		content: "";
+		border: 10px solid transparent;
+		border-left-color: rgb(96, 125, 139);
+		display: inline-block;
+		position: relative;
+		left:7px;
+		top: 5px;
 	}
 	.topBarRight {
 		color: rgb(199, 205, 208);
@@ -392,18 +520,19 @@ input{
 		border: 2px solid rgb(199, 205, 208);
 		margin: 28px 0px 28px 15px;
 	}
-	canvas{
+	canvas {
 		position: relative;
 		top: 15px;
 		left: 15px;
 	}
-	.topBarLeftFirst img{
+	.topBarLeftFirst img {
 		position: relative;
 		top: 10px;
 		left: 10px;
 		width: 80px;
 	}
-	.topBarLeftSecond,#login{
+	.topBarLeftSecond,
+	#login {
 		float: left;
 		height: 160px;
 		line-height: 160px;
@@ -414,8 +543,24 @@ input{
 		height: 160px;
 		line-height: 160px;
 		margin-left: 10px;
-		font-size: 1.5em;
-		font-weight: 100;
+	}
+	#logOut::before {
+		content: "";
+		border: 10px solid transparent;
+		display: inline-block;
+		border-left-color: rgb(199, 205, 208);
+		position: relative;
+		top: 5px;
+		left: 30px;
+	}
+	#logOut::after {
+		content: "";
+		border: 10px solid transparent;
+		border-left-color: rgb(96, 125, 139);
+		display: inline-block;
+		position: relative;
+		left:7px;
+		top: 5px;
 	}
 	.topBarRight {
 		color: rgb(199, 205, 208);
@@ -561,9 +706,11 @@ input{
 .cardUlClass {
 	text-shadow: 0px 1px 3px rgba(199, 205, 208, 0.5);
 }
-.cardUl li:nth-child(2){
+
+.cardUl li:nth-child(2) {
 	border-left: 1px solid rgb(199, 205, 208);
 }
+
 .cardUl li:last-child {
 	border-left: 1px solid rgb(199, 205, 208);
 }
@@ -576,8 +723,8 @@ input{
 	padding-top: 15px;
 	padding-bottom: 15px;
 	text-align: left;
-	background-color: rgb(199,205,208);
-	color: rgb(96,125,139);
+	background-color: rgb(199, 205, 208);
+	color: rgb(96, 125, 139);
 	font-size: 1.1em;
 	/*display: none;*/
 }
@@ -717,4 +864,134 @@ input{
 
 .addressIndex ul li:nth-child(2) {
 	border-bottom-color: rgb(199, 205, 208);
+}
+
+
+/*绩点查询*/
+
+.pointIndex {
+	display: none;
+	color: rgb(199, 205, 208);
+}
+
+.pointIndex span {
+	width: 49%;
+	display: inline-block;
+	height: 30px;
+	color: inherit;
+	text-align: center;
+	line-height: 30px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	font-size: 1.2em;
+	border-radius: 10px;
+}
+
+.pointIndexContainer {
+	display: none;
+}
+
+.pointIndex ul {
+	width: 60%;
+	margin: 10px auto 0px auto;
+	font-size: 1em;
+	background-color: white;
+	color: rgb(96, 125, 139);
+	border-radius: 5px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 5%;
+	padding-right: 5%;
+}
+
+.pointIndex ul:last-child {
+	margin-bottom: 15px;
+}
+
+.pointIndex ul li {
+	text-align: left;
+	height: 25px;
+	line-height: 25px;
+}
+
+.pointIndex ul li:first-child {
+	text-align: center;
+	font-size: 1.2em;
+}
+
+.pointIndex ul li:nth-child(2) {
+	background-color: rgb(96, 125, 139);
+	height: 1px;
+	margin: 8px auto 3px auto;
+}
+
+.GPAfigure {
+	display: none;
+}
+
+.GPAfigure table {
+	width: 100%;
+}
+
+.GPAfigure div {
+	margin: 10px auto 20px auto;
+	width: 90%;
+	opacity: 0.6;
+	font-size: 0.7em;
+}
+
+.GPAfigure table tr {
+	width: 100%;
+}
+
+.GPAfigure table tr th {
+	border-top: 1px dashed rgba(199, 205, 208, 0.5);
+	height: 35px;
+}
+
+.GPAfigure table tr td,
+.GPAfigure table tr th {
+	width: 50%;
+	text-align: center;
+	height: 40px;
+}
+
+.GPAfigure table tr td input {
+	width: 70%;
+	height: 30px;
+	background-color: transparent;
+	border: 1px solid rgba(199, 205, 208, 0.3);
+	padding-left: 10%;
+	border-radius: 3px;
+	color: rgb(199, 205, 208);
+	font-size: 1em;
+	margin: 5px 0px 5px 0px;
+}
+
+.GPAfigure ul {
+	width: 40px;
+	margin: 0px;
+	background-color: transparent;
+	padding: 0px;
+	position: fixed;
+	bottom: 10px;
+	right: 10px;
+}
+
+.GPAfigure ul li,
+.GPAfigure ul li:nth-child(2) {
+	margin-bottom: 15px;
+	width: 40px;
+	height: 40px;
+	background-color: rgb(199, 205, 208);
+	color: rgb(96, 125, 139);
+	border-radius: 50%;
+	line-height: 40px;
+	text-align: center;
+	font-size: 2em;
+	box-shadow: 2px 2px 2px rgb(96, 90, 100);
+}
+
+.GPAfigure ul li:last-child {
+	font-size: 0.5em;
 }
