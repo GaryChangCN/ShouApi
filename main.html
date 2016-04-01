@@ -19,18 +19,23 @@
 		</div>
 		<div class="alert">
 			<div class="alertTitle">
-				提示
+				
 			</div>
 			<div class="alertContent">
-				这是一个提示这是一个
+				
 			</div>
 			<button class="ok">确定</button>
 		</div>
 		<div class="container">
 			<div class="hearder">
-				<span id="back"> &nbsp;返回</span>
-				<span>海大新媒体</span>
-				<span id="refresh">刷新&nbsp;</span>
+				<span id="back"> 
+					<a id="goBack"></a>
+					<a id="about"></a>
+				</span>
+				<span id="title">海大新媒体Beta</span>
+				<span id="refresh">
+					<a id="repeat"></a>
+				</span>
 			</div>
 			<!--进度条-->
 			<div class="loadingBack">
@@ -49,7 +54,7 @@
 							登录
 						</div>
 						<div class="topBarLeftThird">
-							>>
+							<a id="logOut"></a>
 						</div>
 					</div>
 					<div class="topBarRight">
@@ -136,7 +141,39 @@
 			</div>
 			<!--绩点查询主页===============================================================-->
 			<div class="pointIndex index">
-				
+				<span>绩点计算器</span>
+				<span>个人绩点查看</span>
+				<div class="pointIndexContainer">
+					<ul class="personal">
+						<li></li>
+						<li></li>
+						<li>平均分：</li>
+						<li>平均学分绩点：</li>
+						<li>平均绩点</li>
+					</ul>
+				</div>
+				<div class="GPAfigure">
+					<table>
+						<tr>
+							<th>课程成绩</th>
+							<th>学分</th>
+						</tr>
+						<tr>
+							<td><input type="text"/></td>
+							<td><input type="text"/></td>
+						</tr>
+					</table>
+					<div >
+						tips:课程成绩可以为百分制，五分制（优秀、良好、中等、及格、不及格），两分制（通过，不通过）。若
+						输入课程成绩不为百分制、五分制、两分制中的一项，则默认为60分，绩点为0计算！<br />"+"号增加一项
+						"-"号删除一项，点击计算开始计算。
+					</div>
+					<ul>
+						<li>+</li>
+						<li>-</li>
+						<li>计算</li>
+					</ul>
+				</div>
 			</div>
 			<!--通讯录查询主页======================================================================-->
 			<div class="addressIndex index">

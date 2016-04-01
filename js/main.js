@@ -26,14 +26,26 @@ require(["blockies", "index"], function() {
 	}
 	informationShow();
 	windowHeight();
-	$(".ok,.cover").click(function() {
+	$(".cover").click(function() {
 		closeAlert();
 	})
-	$("#back").click(function() {
+	$(".ok").click(function(){
+		var a=$(".alertContent").text();
+		if (a.indexOf("确定要退出登录")>=0) {
+			localStorage.removeItem("name");
+			localStorage.removeItem("password");
+			localStorage.removeItem("username");
+			localStorage.clear();
+			location.reload(true);
+		} else{
+			closeAlert();
+		}
+	})
+	$("#goBack").click(function() {
 		page.back();
 	})
 	$(".hearder span:last-child").click(function() {
-		window.location.reload();
+		window.location.reload(true);
 	})
 	$("canvas").click(function() {
 		openAlert("头像", "这里是您的专属头像，由学号加姓名随机生成，目前不支持更改")
@@ -48,6 +60,13 @@ require(["blockies", "index"], function() {
 			endLoad()
 		});
 	})
+	$("#logOut").click(function(){
+		if (localStorage.username) {
+			openAlert("提示","确定要退出登录？")
+		} else{
+			openAlert("提示","请先登录！");
+		}
+	})
 	$(".card").click(function() {
 		if ((!localStorage.username) || (!localStorage.password)) {
 			openAlert("提示", "请先登录")
@@ -58,7 +77,7 @@ require(["blockies", "index"], function() {
 			$("body").scrollTop(0);
 			mainIndexAnimateHide('mainIndex', 'cardIndex');
 			require(['card'], function() {
-				endLoad()
+				endLoad();
 			})
 		}
 	})
@@ -71,7 +90,7 @@ require(["blockies", "index"], function() {
 			startLoad(30, 85, 1, 2);
 			$("body").scrollTop(0);
 			mainIndexAnimateHide('mainIndex', 'achievementIndex');
-			require(['achievementGPA'], function() {
+			require(['achievement'], function() {
 				endLoad();
 			})
 		}
@@ -86,6 +105,20 @@ require(["blockies", "index"], function() {
 			$("body").scrollTop(0);
 			mainIndexAnimateHide('mainIndex', 'addressIndex');
 			require(['address'], function() {
+				endLoad();
+			})
+		}
+	})
+	$(".point").click(function(){
+		if ((!localStorage.username) || (!localStorage.password)) {
+			openAlert("提示", "请先登录")
+			informationShow();
+		} else {
+			page.push("pointIndex");
+			startLoad(30, 85, 1, 2);
+			$("body").scrollTop(0);
+			mainIndexAnimateHide('mainIndex', 'pointIndex');
+			require(['GPA'], function() {
 				endLoad();
 			})
 		}

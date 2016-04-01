@@ -96,14 +96,22 @@ function mainIndexAnimateHide(a, b) { //mainIndex切换动画（关闭）
 	}, 500, function() {
 		$(".mainIndex").css('display', 'none');
 		$("." + b).css('display', 'block');
-		$("#back").show();
+		if (a=="mainIndex") {
+			$("#about").hide();
+			$("#goBack").show();
+		}
 	})
 }
 
 function mainIndexAnimateShow(a, b) { //mainIndex切换动画 （打开）
 	$("." + b).css('display', 'none');
 	$("." + a).css('display', 'block');
-	$("#back").hide();
+	$("#goBack").hide();
+	if (a=='mainIndex') {
+		$("#about").show()
+		$("#goBack").hide();
+	} else{
+	}
 	$("." + a).animate({
 		marginRight: "0%"
 	}, 500);
