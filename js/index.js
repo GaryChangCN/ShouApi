@@ -42,8 +42,8 @@ function closeAlert() { //模拟弹出框--关闭
 function openAlert(title, content) { //模拟弹出框--打开
 	$(".cover,.alert").show();
 	disableTouchmove()
-	$(".alertTitle").text(title);
-	$(".alertContent").text(content);
+	$(".alertTitle").html(title);
+	$(".alertContent").html(content);
 }
 
 function windowHeight() { //设备窗口高度
@@ -139,3 +139,7 @@ function informationShow() { //登录或退出后个人资料变化
 		$("#login").text(localStorage.name).removeClass("topBarLeftSecond");
 	}
 }
+function iReload() {  //刷新随机时间戳
+			var a = new Date();
+			window.location.href = page.url + "/main.html?main=" + a.getTime();
+		}
