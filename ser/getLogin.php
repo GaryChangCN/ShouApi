@@ -45,7 +45,14 @@ if ($r1[0] > 0) {
 		$odegree = $a1['Data']['PsnType'];
 		$ocollege = $a1['Data']['PsnDept'];
 		$otime = date("Y-m-d H:i:s");
-		$link -> query("INSERT INTO user(name,username,password,md5,time,degree,phonenumber,college,email,wechat,qq) VALUES('$oname','$ousername','$password','$omd5','$otime','$odegree','','$ocollege','','','')");
+		$qq=$link -> query("select count('username') from user where username='$username'");
+		$rr = $qq -> fetch_array();
+		if($rr[0]>0){
+		  $link->query("DELETE FROM user WHERE username='$username'");
+		  $link -> query("INSERT INTO user(name,username,password,md5,time,degree,phonenumber,college,email,wechat,qq) VALUES('$oname','$ousername','$password','$omd5','$otime','$odegree','','$ocollege','','','')");
+		}else{
+		  $link -> query("INSERT INTO user(name,username,password,md5,time,degree,phonenumber,college,email,wechat,qq) VALUES('$oname','$ousername','$password','$omd5','$otime','$odegree','','$ocollege','','','')");
+		}
 	} else {
 		$data['state'] = "1";
 	}
