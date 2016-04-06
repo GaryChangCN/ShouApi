@@ -19,7 +19,7 @@ $RECYCLE.BIN/
 api.js
 *.lnk
 *.project
-
+/ser/shouTemp.txt
 # =========================
 # Operating System Files
 # =========================
