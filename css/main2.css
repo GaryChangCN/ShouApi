@@ -368,7 +368,7 @@ input {
 
 /*大屏幕结束  手机--大屏幕开始*/
 
-@media only screen and (min-width: 400px) and (max-width: 768px) {
+@media only screen and (min-width: 400px) and (max-width: 767px) {
 	.container {
 		width: 100%;
 		margin: 0px;
@@ -494,7 +494,7 @@ input {
 
 /*手机-大屏幕结束  手机-小屏幕开始*/
 
-@media only screen and (min-width: 320px) and (max-width: 400px) {
+@media only screen and (min-width: 320px) and (max-width: 399px) {
 	.container {
 		width: 100%;
 		margin: 0px;
@@ -616,7 +616,7 @@ input {
 
 /*手机小屏幕结束  以下不兼容*/
 
-@media only screen and(max-width: 320px) {
+@media only screen and(max-width: 319px) {
 	.attention {
 		display: block;
 	}
