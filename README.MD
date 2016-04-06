@@ -6,7 +6,7 @@ ShouMedia
 
 #### 海大新型URP查询暨校园生活网页
 
-#### 地址: [http://www.shouedu.cn(暂未上线)]()
+#### 地址: [http://www.shouedu.cn(测试版)]()
 
 `开发语言`
 
