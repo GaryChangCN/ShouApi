@@ -1,33 +1,13 @@
-var beta = "?beta=1.0";
 require.config({
+	urlArgs:"beta=1.0.0",
 	paths: {
-		"card": ["card.js" + beta, "card"],
-		"achievement": ["achievement.js" + beta, "achievement"],
-		"address": ["address.js" + beta, "address"],
-		"GPA": ["GPA.js" + beta, "GPA"],
-		"login": ["login.js" + beta, "login"],
-		"index": ["index.js" + beta, "index"]
+		"card": "card",
+		"achievement": "achievement",
+		"address": "address",
+		"GPA":  "GPA",
+		"login":"login",
+		"index": "index"
 	}
-	//	shim: {
-	//		blockies: {
-	//			exports: 'blockies'
-	//		},
-	//		index: {
-	//			exports: 'index'
-	//		},
-	//		achievementGPA: {
-	//			exports: 'achievementGPA'
-	//		},
-	//		address: {
-	//			exports: 'address'
-	//		},
-	//		card: {
-	//			exports: 'card'
-	//		},
-	//		login:{
-	//			expotrs:'login'
-	//		}
-	//	}
 })
 require(["blockies", "index"], function() {
 	if (!isLocalStorageSupported()) {
