@@ -1,5 +1,10 @@
 (function() {
 	endLoad();
+	$("#username").keyup(function(event) {
+		if($(this).val().length==7){
+			$("#password").focus();
+		}
+	});
 	$("#loginSubmit").click(function() {
 		var exp = /^\d+$/g;
 		if ($("#username").val() == "" || $("#password").val() == "") {
