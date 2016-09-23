@@ -86,7 +86,7 @@ page.back = function() { //返回按键
 	page.pop();
 	mainIndexAnimateShow(a, b)
 }
-page.url="http://192.168.1.188:8080/shoumedia";
+page.url="http://192.168.1.115:8080/shoumedia";
 function mainIndexAnimateHide(a, b) { //mainIndex切换动画（关闭）
 	$(".topBar").animate({
 		opacity: "0"
