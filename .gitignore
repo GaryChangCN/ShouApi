@@ -13,13 +13,14 @@ $RECYCLE.BIN/
 *.msi
 *.msm
 *.msp
-/ser/conn.php
-/ser/xszcconn.php
+/v1.0/ser/conn.php
+/v1.0/ser/xszcconn.php
 # Windows shortcuts
 api.js
 *.lnk
 *.project
-/ser/shouTemp.txt
+/node_modules
+/v1.0/ser/shouTemp.txt
 # =========================
 # Operating System Files
 # =========================
