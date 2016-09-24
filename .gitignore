@@ -20,6 +20,8 @@ api.js
 *.lnk
 *.project
 /node_modules
+shoumedia/node_modules
+server/node_modules
 /v1.0/ser/shouTemp.txt
 # =========================
 # Operating System Files
