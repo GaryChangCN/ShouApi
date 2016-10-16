@@ -28,7 +28,7 @@ app.route('/api/getcard/:md5').get(function*(next) {
 })
 
 
-console.log("listen 80");
+console.log("listen in 80");
 
 app.listen(80)
 
