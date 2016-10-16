@@ -1,6 +1,5 @@
 var request = require('request');
 
-
 var get = function(cookie, url) {
     return new Promise(function(resolve, reject) {
         request.get({
@@ -14,11 +13,18 @@ var get = function(cookie, url) {
                     err: true
                 });
             } else {
+                var body=body.toLocaleLowerCase();
                 var body = JSON.parse(body);
-                resolve({
-                    balance: body.data.balance,
-                    state: body.msg == "成功" ? true : false
-                })
+                if (body.Code == '-1') {
+                    reject({
+                        state: false
+                    });
+                } else {
+                    resolve({
+                        data: body.data,
+                        state: true
+                    });
+                }
             }
         });
     })
