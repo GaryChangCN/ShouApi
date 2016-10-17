@@ -1,65 +1,30 @@
 <template>
     <div id="app">
-        <hello></hello>
-        <p>{{count}}</p>
-        <button @click="increment">+</button>
-        <button @click="decrement">-</button>
+        <vue-progress-bar></vue-progress-bar>
+        <div id="view">
+            <transition>
+                <router-view></router-view>
+            </transition>
+        </div>
     </div>
 </template>
 <script>
-    import Hello from './components/Hello';
-    import {mapState,mapMutations,mapGetters,mapActions} from 'vuex';
-    export default {
-        components:{
-            Hello
-        },
-        computed:{
-            ...mapState(['count'])
-        },
-//        computed:mapState(['count']),
-        // computed:mapGetters({
-        //     count:'doCount'
-        // }),
-        // computed:{
-        //     ...mapGetters({
-        //         count:'doCount'
-        //     })
-        // },
-        methods:{
-            ...mapMutations(['decrement']),
-            ...mapActions({
-                increment:'doIncrement'
-            })
-        }
-    }
+    export default {}
 </script>
 <style>
     html {
-        height: 100%;
+        font-family: "微软雅黑";
     }
     
-    body {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 100%;
+    * {
+        padding: 0px;
+        margin: 0px;
+        border: 0px;
     }
     
-    #app {
-        color: #2c3e50;
-        margin-top: -100px;
-        max-width: 600px;
-        font-family: Source Sans Pro, Helvetica, sans-serif;
-        text-align: center;
+    .__cov-progress {
+        position: fixed;
+        top: 0;
     }
     
-    #app a {
-        color: #42b983;
-        text-decoration: none;
-    }
-    
-    .logo {
-        width: 100px;
-        height: 100px
-    }
 </style>
