@@ -1,31 +1,31 @@
 import Vue from 'vue';
+import Element from 'element-ui';
+import 'element-ui/lib/theme-default/index.css'
 import VueRouter from 'vue-router';
 
 Vue.use(VueRouter);
+Vue.use(Element);
 
-import VueProgressBar from 'vue-progressbar'
-
-Vue.use(VueProgressBar, {
-    color: 'rgb(113,107,95)',
-    failedColor: 'red',
-    height: '3px'
-})
-
-import App from './App.vue';
-import Index from './components/Index.vue';
-import World from './components/world.vue';
+import App from './App';
+import Hello from './components/Hello';
+import Picker from './components/datepicker';
+import Index from './components/Index'
+import Login from './components/Login';
 
 const router = new VueRouter({
     mode: 'history',
     routes: [{
-        path: '/world',
-        component: World
-    }, {
         path: '/',
         component: Index
-    }]
+    }, {
+        path: '/picker',
+        component: Picker
+    },{
+		path:'/login',
+		name:'login',
+		component:Login
+	}]
 });
-
 
 new Vue({
     el: '#app',
@@ -38,9 +38,9 @@ new Vue({
         var width = document.documentElement.clientWidth ? document.documentElement.clientWidth : window.innerWidth;
         var rem = width / 10;
         document.querySelector("html").style.fontSize = rem + "px";
-    };
+    }
     setRem();
     window.addEventListener("resize", function() {
         setRem();
     });
-}());
+}())

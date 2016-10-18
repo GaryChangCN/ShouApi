@@ -1,30 +1,24 @@
 <template>
-    <div id="app">
-        <vue-progress-bar></vue-progress-bar>
-        <div id="view">
-            <transition>
-                <router-view></router-view>
-            </transition>
-        </div>
+  <div id="app">
+    <div id="view">
+      <transition>
+        <router-view></router-view>
+      </transition>
     </div>
+  </div>
 </template>
+
 <script>
-    export default {}
+    export default {
+        name: 'app'
+    }
 </script>
-<style>
-    html {
-        font-family: "微软雅黑";
-    }
-    
+
+<style lang="scss">
     * {
-        padding: 0px;
-        margin: 0px;
-        border: 0px;
+        font-family: "微软雅黑";
+        padding: 0;
+        margin: 0;
+        border: 0;
     }
-    
-    .__cov-progress {
-        position: fixed;
-        top: 0;
-    }
-    
 </style>
