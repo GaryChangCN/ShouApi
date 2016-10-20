@@ -16,7 +16,7 @@
 </template>
 <script>
     import {
-        mapActions
+        mapMutations
     } from 'vuex';
     export default {
         name: "component_name",
@@ -39,7 +39,14 @@
                                 type: 'success',
                                 showClose:"true"
                             });
-                            this.login();
+                            this.login({
+                                login:true,
+                                username:this.username,
+                                password:this.password,
+                                md5:res.data.md5,
+                                studentName:res.data.name
+                            });
+                            this.$router.go(-1);
                         }else{
                             this.$message({
                                 message:'登录失败',
@@ -50,13 +57,13 @@
                     }
                 })
             },
-            ...mapActions([
-                'login'
-            ])
+            ...mapMutations({
+                login:'LOGIN'
+            })
         }
     }
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 	#login {
 		display: flex;
 		flex-direction: column;
@@ -72,9 +79,6 @@
 				top: 2rem;
 				bottom: 1rem;
 			}
-		}
-		button {
-			color: #8492A6;
 		}
 	}
 </style>
