@@ -27,39 +27,39 @@ module.exports = {
     },
     module: {
         loaders: [{
-                test: /\.vue$/,
-                loader: 'vue'
-            },
-            {
-                test: /\.js$/,
-                loader: 'babel',
-                include: projectRoot,
-                exclude: /node_modules/
-            },
-            {
-                test: /\.json$/,
-                loader: 'json'
-            },
-            {
-                test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-                loader: 'url',
-                query: {
-                    limit: 10000,
-                    name: utils.assetsPath('img/[name].[hash:7].[ext]')
-                }
-            },
-            {
-                test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
-                loader: 'url',
-                query: {
-                    limit: 10000,
-                    name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
-                }
-            },
-            {
-                test: /\.scss$/,
-                loaders: ["style", "css", "sass"]
-            },
+            test: /\.vue$/,
+            loader: 'vue'
+        },
+        {
+            test: /\.js$/,
+            loader: 'babel',
+            include: projectRoot,
+            exclude: /node_modules/
+        },
+        {
+            test: /\.json$/,
+            loader: 'json'
+        },
+        {
+            test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+            loader: 'url',
+            query: {
+                limit: 10000,
+                name: utils.assetsPath('img/[name].[hash:7].[ext]')
+            }
+        },
+        {
+            test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+            loader: 'url',
+            query: {
+                limit: 20000,
+                name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
+            }
+        },
+        {
+            test: /\.scss$/,
+            loaders: ["style", "css", "sass"]
+        },
         ]
     },
     vue: {
