@@ -1,3 +1,4 @@
+require('events').EventEmitter.prototype._maxListeners = 100;
 var koa = require('koa');
 var app = koa();
 var getCard = require('./myModules/getCard')
@@ -14,6 +15,7 @@ app.route('/api/login').post(function* (next) {
         this.body = {
             err: true
         }
+        yield next;
     }
 }, function* () {
     this.set('Access-Control-Allow-Origin', '*');
