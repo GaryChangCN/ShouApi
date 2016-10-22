@@ -9,7 +9,8 @@ const store = new Vuex.Store({
         username: null,
         password: null,
         md5: null,
-        studentName: null
+        studentName: null,
+        cookie: null
     },
     mutations: {
         LOGOUT(state) {
@@ -18,6 +19,7 @@ const store = new Vuex.Store({
             state.password = null;
             state.md5 = null;
             state.studentName = null;
+            state.cookie = null;
             window.localStorage.removeItem('info');
         },
         LOGIN(state, value) {
@@ -26,6 +28,7 @@ const store = new Vuex.Store({
             state.password = value.password;
             state.md5 = value.md5;
             state.studentName = value.studentName;
+            state.cookie = value.cookie
             window.localStorage.info = JSON.stringify(value);
         }
     },

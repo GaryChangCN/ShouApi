@@ -1,6 +1,6 @@
 <template>
 	<div id='function'>
-		<div class="item">
+		<div class="item" @click="card">
 			<i class="iconfont">&#xe609;</i>
 			<span>一卡通</span>
 		</div>
@@ -55,14 +55,31 @@
         data() {
             return {};
         },
-        methods:{
-            go(){
-                var _this=this;
-                return {
-                    card:function(){
-                    _this.$router.push({name:''});
-                }
-                }
+        methods: {
+            card: function() {
+                this.$router.push({
+                    name: 'card'
+                });
+            },
+            class: function() {
+                this.$router.push({
+                    name: 'class'
+                });
+            },
+            score: function() {
+                this.$router.push({
+                    name: 'score'
+                });
+            },
+            gpa: function() {
+                this.$router.push({
+                    name: 'gpa'
+                });
+            },
+            address: function() {
+                this.$router.push({
+                    name: 'address'
+                });
             }
         }
     }

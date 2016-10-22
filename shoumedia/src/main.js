@@ -26,11 +26,9 @@ import Address from './components/Address';
 const router = new VueRouter({
     mode: 'history',
     routes: [{
+        name: 'index',
         path: '/',
         component: Index
-    }, {
-        path: '/picker',
-        component: Picker
     }, {
         path: '/login',
         name: 'login',

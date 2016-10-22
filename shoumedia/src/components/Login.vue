@@ -44,7 +44,8 @@
                                 username:this.username,
                                 password:this.password,
                                 md5:res.data.md5,
-                                studentName:res.data.name
+                                studentName:res.data.name,
+                                cookie:res.data.cookie
                             });
                             this.$router.go(-1);
                         }else{

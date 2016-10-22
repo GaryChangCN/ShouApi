@@ -20,6 +20,8 @@ var info = function (_this) {
                         });
                     } else {
                         reslove({
+                            username: field.username,
+                            password: field.password,
                             md5: b.Data.MD5Code,
                             name: b.Data.PsnName,
                             college: b.Data.PsnDept,
@@ -37,4 +39,6 @@ var info = function (_this) {
     return login;
 }
 
-exports.info = info;
+module.exports = {
+    info: info
+};
