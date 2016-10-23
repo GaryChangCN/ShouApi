@@ -20,11 +20,11 @@ export default {
   },
 	mounted(){
 	},
-	computed: mapState(['md5','cookie']),
+	computed: mapState(['md5','username']),
 	methods:{
 		test(){
 			var _this=this;
-			this.$http.get("http://192.168.1.188/api/getcard/getbalance/BDA164DEBE79D3E4").then(function(res){
+			this.$http.get("http://192.168.1.188/api/"+_this.username+"/getcard/getbalance").then(function(res){
 				 console.log(res);
 			})
 		}
