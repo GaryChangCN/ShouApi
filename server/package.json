@@ -13,6 +13,7 @@
     "koa": "^1.2.4",
     "koa-router": "^5.4.0",
     "koa-trie-router": "^1.1.0",
+    "log4js": "^0.6.38",
     "mongoose": "^4.6.4",
     "request": "^2.75.0"
   }
