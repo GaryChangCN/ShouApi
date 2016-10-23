@@ -18,6 +18,7 @@ $RECYCLE.BIN/
 # Windows shortcuts
 api.js
 *.lnk
+*.log
 *.project
 /node_modules
 shoumedia/node_modules
