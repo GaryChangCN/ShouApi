@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Element from 'element-ui';
 import 'element-ui/lib/theme-default/index.css';
 import './assets/iconfont.css'
+import './assets/main.less'
 import VueRouter from 'vue-router';
 import VueResource from 'vue-resource';
 import store from './store'
@@ -10,17 +11,6 @@ Vue.use(VueRouter);
 Vue.use(VueResource);
 Vue.use(Element);
 
-
-// import App from './App';
-// import Hello from './components/Hello';
-// import Picker from './components/datepicker';
-// import Index from './components/Index'
-// import Login from './components/Login';
-// import Card from './components/Card';
-// import Class from './components/Class';
-// import Score from './components/Score';
-// import Gpa from './components/Gpa';
-// import Address from './components/Address';
 
 const App = resolve => require(['./App.vue'], resolve);
 const Hello = resolve => require(['./components/Hello.vue'], resolve);

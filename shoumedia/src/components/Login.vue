@@ -64,22 +64,3 @@
         }
     }
 </script>
-<style lang="scss" scoped>
-	#login {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		.el-input {
-			width: 8rem;
-			margin-bottom: 0.5rem;
-		}
-		.title {
-			color: #58b7ff;
-			font-size: 1.5rem;
-			margin: {
-				top: 2rem;
-				bottom: 1rem;
-			}
-		}
-	}
-</style>

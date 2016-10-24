@@ -1,0 +1,132 @@
+@Black: #1F2D3D;
+@LightBlack: #324057;
+@ExtraLightBlack: #475669;
+@Silver: #8492A6;
+@LightSilver: #99A98F;
+@ExtraLightSliver: #C0CCDA;
+@Gray: #D3DCE6;
+@LightGray: #E5E9F2;
+@ExtraLightGray: #EFF2F7;
+@DarkWhite: #F9FAFC;
+@White: #FFFFFF;
+@LightBule: #58B7FF;
+@Blue: #20A0FF;
+@DarkBule: #1D8CE0;
+@bigger: 0.3rem;
+@big: 0.2rem;
+@middle: 0.15rem;
+@small: 0.1rem;
+body {
+  font-family: "微软雅黑";
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+.el-button {
+  color: #8492A6;
+}
+
+//app.vue
+#app {
+  .head {
+    width: 10rem;
+    height: 1.2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #58B7FF;
+    color: #fff;
+    position: fixed;
+    top: 0;
+    h1 {
+      font-size: 0.5rem;
+      font-weight: 100;
+    }
+    i {
+      font-size: 0.5rem;
+      width: 0.6rem;
+      padding-left: 0.2rem;
+      padding-right: 0.2rem
+    }
+  }
+  #view {
+    margin-top: 1.2rem;
+  }
+}
+
+//login.vue
+#login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .el-input {
+    width: 8rem;
+    margin-bottom: 0.5rem;
+  }
+  .title {
+    color: #58b7ff;
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+}
+
+//function.vue
+#function {
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+		flex-wrap: wrap;
+		.item {
+			width: 3rem;
+			height: 3.5rem;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			border-bottom: 1px solid #E5E9F2;
+			flex-grow: 1;
+			&:nth-child(1) {}
+			&:nth-child(2) {
+				border-left: 1px solid @LightGray;
+			}
+			&:nth-child(3) {
+				border-left: 1px solid @LightGray;
+			}
+			&:nth-child(4) {}
+			&:nth-child(5) {
+				border-left: 1px solid @LightGray;
+			}
+			&:nth-child(6) {
+				border-left: 1px solid @LightGray;
+			}
+			&:nth-child(7) {}
+			&:nth-child(8) {
+				border-left: 1px solid @LightGray;
+			}
+			&:nth-child(9) {
+				border-left: 1px solid @LightGray;
+			}
+			&:nth-child(10) {}
+			&:nth-child(11) {
+				border-left: 1px solid @LightGray;
+			}
+			&:last-child(2) {
+				flex-grow: 2;
+			}
+			i {
+				font-size: 1rem;
+				color: #58B7FF;
+				padding-top: 0.2rem;
+			}
+			span {
+				font-size: 0.4rem;
+				padding-top: 0.2rem;
+				color: #8492A6;
+			}
+		}
+	}
