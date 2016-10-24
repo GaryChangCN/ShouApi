@@ -11,16 +11,26 @@ Vue.use(VueResource);
 Vue.use(Element);
 
 
-import App from './App';
-import Hello from './components/Hello';
-import Picker from './components/datepicker';
-import Index from './components/Index'
-import Login from './components/Login';
-import Card from './components/Card';
-import Class from './components/Class';
-import Score from './components/Score';
-import Gpa from './components/Gpa';
-import Address from './components/Address';
+// import App from './App';
+// import Hello from './components/Hello';
+// import Picker from './components/datepicker';
+// import Index from './components/Index'
+// import Login from './components/Login';
+// import Card from './components/Card';
+// import Class from './components/Class';
+// import Score from './components/Score';
+// import Gpa from './components/Gpa';
+// import Address from './components/Address';
+
+const App = resolve => require(['./App.vue'], resolve);
+const Hello = resolve => require(['./components/Hello.vue'], resolve);
+const Index = resolve => require(['./components/Index.vue'], resolve);
+const Login = resolve => require(['./components/Login.vue'], resolve);
+const Card = resolve => require(['./components/Card.vue'], resolve);
+const Class = resolve => require(['./components/Class.vue'], resolve);
+const Score = resolve => require(['./components/Score.vue'], resolve);
+const Gpa = resolve => require(['./components/Gpa.vue'], resolve);
+const Address = resolve => require(['./components/Address.vue'], resolve);
 
 
 const router = new VueRouter({
