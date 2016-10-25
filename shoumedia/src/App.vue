@@ -50,8 +50,6 @@
 					}
         },
         mounted(){
-          var _this=this;
-          console.log(_this.name);
         }
     }
 </script>
