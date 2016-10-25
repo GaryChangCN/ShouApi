@@ -1,44 +1,51 @@
 <template>
-	<div id='card'>
-		<el-tabs>
-			<el-tab-pane label="当前余额">
-				<button @click="test">click</button>
-			</el-tab-pane>
-			<el-tab-pane label="消费记录">
-				me
-			</el-tab-pane>
-		</el-tabs>
-	</div>
+  <div id='card'>
+    <el-tabs>
+      <el-tab-pane label="当前余额">
+        <el-card class="box-card">
+          <div slot="header" class="clearfix">
+            <span style="line-height: 36px;">{{card.custname}}</span>
+            <el-button style="float: right;" @click.native="info" type="primary">刷新</el-button>
+          </div>
+					<div class="text item">
+						{{card.custtype}}
+          </div>
+					<div class="text item">
+						{{card.deptname}}
+          </div>
+					<div class="text item">
+						{{card.balance}}
+          </div>
+        </el-card>
+      </el-tab-pane>
+      <el-tab-pane label="消费记录">
+        me
+      </el-tab-pane>
+    </el-tabs>
+  </div>
 </template>
 <script>
-	import {mapState} from 'vuex';
-export default {
-  name: "card",
-  data () {
-    return {
-    };
-  },
-	mounted(){
-	},
-	computed: mapState(['md5','username']),
-	methods:{
-		test(){
-			var _this=this;
-			this.$http.get("http://192.168.1.188/api/"+_this.username+"/getcard/getbalance").then(function(res){
-				 console.log(res);
-			})
-		}
-	}
-}
+    import {
+        mapState
+    } from 'vuex';
+    export default {
+        name: "card",
+        data() {
+            return {
+                card: {}
+            };
+        },
+        mounted() {
+					this.info();
+        },
+        computed: mapState(['md5', 'username']),
+        methods: {
+            info() {
+                var _this = this;
+                this.$http.get("http://192.168.1.188/api/" + _this.username + "/getcard/getbalance").then(function(res) {
+                    _this.card = res.data.data;
+                });
+            }
+        }
+    }
 </script>
-<style lang="scss">
-	#card {
-		.el-tabs__header>.el-tabs__item {
-			width: 5rem;
-			text-align: center;
-		}
-		.el-tabs__active-bar {
-			width: 5rem;
-		}
-	}
-</style>
