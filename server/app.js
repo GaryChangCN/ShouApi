@@ -14,7 +14,7 @@ app.route('/api/login').post(function* (next) {
             username: info.username
         }, function (err, doc) {
             if (err) {
-                logger.error("id:0---" + err);
+                logger.error("id:0" + err);
             }
             if (doc.length == 0) {
                 var saveDb = new db.User(info);
@@ -54,6 +54,7 @@ app.route('/api/:username/getcard/getbalance').get(function* (next) {
         var promise = db.User.findOne({
             username: username
         }).exec();
+        console.log(username);
         var info = yield promise;
         var getCardInfo = yield getCard.getBalance(info.cookie, info.md5);
         this.body = getCardInfo;
