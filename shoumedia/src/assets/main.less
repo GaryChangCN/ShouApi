@@ -38,6 +38,25 @@
 
 //app.vue
 #app {
+  .process{
+    background-color:@LightBule;
+    position: fixed;
+    top: 0;
+    z-index: 60;
+    width: 10rem;
+    height: 2px;
+    .process-go{
+      width: 0;
+      height: inherit;
+      background-color: @DarkBule;
+      transition: width 0.5s;
+    }
+  }
+  #test{
+    position: fixed;
+    top: 200px;
+    left: 50px;
+  }
   .head {
     width: 10rem;
     height: 1.2rem;

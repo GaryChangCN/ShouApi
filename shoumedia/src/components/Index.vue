@@ -51,7 +51,7 @@
         }
     };
 </script>
-<style lang="scss" scoped>
+<style lang="less" scoped>
 	#index {
 		display: flex;
 		flex-direction: column;

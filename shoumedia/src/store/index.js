@@ -10,7 +10,9 @@ const store = new Vuex.Store({
         password: null,
         md5: null,
         studentName: null,
-        cookie: null
+        cookie: null,
+        process: null,
+        hide: false
     },
     mutations: {
         LOGOUT(state) {
@@ -30,6 +32,18 @@ const store = new Vuex.Store({
             state.studentName = value.studentName;
             state.cookie = value.cookie
             window.localStorage.info = JSON.stringify(value);
+        },
+        BEGIN(state, value) {
+            state.process = value;
+        },
+        END(state) {
+            state.process = '10rem';
+        },
+        HIDE(state) {
+            state.hide = true;
+        },
+        SHOW(state) {
+            state.hide = false;
         }
     },
     actions: {
@@ -39,6 +53,18 @@ const store = new Vuex.Store({
                 var value = JSON.parse(window.localStorage.info);
                 ctx.commit('LOGIN', value);
             }
+        },
+        processBegin(ctx) {
+            var ran = ~~(Math.random() * 30).toFixed(2);
+            var t = (ran + 2) / 10
+            ctx.commit('SHOW');
+            ctx.commit('BEGIN', t + 'rem');
+        },
+        processEnd(ctx) {
+            ctx.commit('END');
+            setTimeout(function() {
+                ctx.commit('HIDE');
+            }, 800);
         }
     }
 });
