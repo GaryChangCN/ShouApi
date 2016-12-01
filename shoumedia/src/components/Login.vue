@@ -18,6 +18,7 @@
     import {
         mapMutations
     } from 'vuex';
+    import CONFIG from './../lib/config';
     export default {
         name: "component_name",
         data() {
@@ -28,10 +29,11 @@
         },
         methods: {
             submit: function() {
-                var f = new FormData();
-                f.append('username', this.username);
-                f.append('password', this.password);
-                this.$http.post('http://192.168.1.188/api/login', f).then(function(res) {
+                var data={
+                    username:this.username,
+                    password:this.password
+                }
+                this.$http.post(CONFIG.API+'login', data).then(function(res) {
                     if (res.ok) {
                         if (!res.data.err) {
                             this.$message({

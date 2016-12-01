@@ -23,6 +23,7 @@ api.js
 /node_modules
 shoumedia/node_modules
 server/node_modules
+shoumedia/dist
 /v1.0/ser/shouTemp.txt
 # =========================
 # Operating System Files

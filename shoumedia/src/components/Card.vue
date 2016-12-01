@@ -28,6 +28,7 @@
     import {
         mapState
     } from 'vuex';
+    import CONFIG from '../lib/config';
     export default {
         name: "card",
         data() {
@@ -42,7 +43,7 @@
         methods: {
             info() {
                 var _this = this;
-                this.$http.get("http://192.168.1.188/api/" + _this.username + "/getcard/getbalance").then(function(res) {
+                this.$http.get(CONFIG.API + _this.username + "/getcard/getbalance").then(function(res) {
                     _this.card = res.data.data;
                 });
             }

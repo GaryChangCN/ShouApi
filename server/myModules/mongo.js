@@ -1,7 +1,9 @@
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
+mongoose.connect('mongodb://127.0.0.1:27017/shoumedia');
+mongoose.Promise = global.Promise;
 
-var userSchema = new mongoose.Schema({
+var userSchema = new Schema({
     username: String,
     password: String,
     md5: String,
@@ -10,18 +12,9 @@ var userSchema = new mongoose.Schema({
     cookie: String
 });
 
-var User = mongoose.model('userSchema', userSchema);
+var User = mongoose.model('User', userSchema);
 
-mongoose.connect('mongodb://127.0.0.1:27017/shoumedia');
-var db = mongoose.connection;
 
-db.on('error', function () {
-    // console.log('error')
-})
-
-db.once('open', function () {
-    // console.log('opened');
-});
 
 module.exports = {
     User: User
