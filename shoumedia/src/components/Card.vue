@@ -43,7 +43,7 @@
         methods: {
             info() {
                 var _this = this;
-                this.$http.get(CONFIG.API + _this.username + "/getcard/getbalance").then(function(res) {
+                this.axios.get(CONFIG.API + _this.username + "/getcard/getbalance").then(function(res) {
                     _this.card = res.data.data;
                 });
             }

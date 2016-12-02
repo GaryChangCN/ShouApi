@@ -33,7 +33,7 @@
                     username:this.username,
                     password:this.password
                 }
-                this.$http.post(CONFIG.API+'login', data).then(function(res) {
+                this.axios.post(CONFIG.API+'login', data).then(function(res) {
                     if (res.ok) {
                         if (!res.data.err) {
                             this.$message({
