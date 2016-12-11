@@ -11,8 +11,10 @@ const store = new Vuex.Store({
         md5: null,
         studentName: null,
         cookie: null,
-        process: null,
-        hide: false
+        processBar: {
+            process: null,
+            hide: true
+        }
     },
     mutations: {
         LOGOUT(state) {
@@ -33,17 +35,15 @@ const store = new Vuex.Store({
             state.cookie = value.cookie
             window.localStorage.info = JSON.stringify(value);
         },
-        BEGIN(state, value) {
-            state.process = value;
+        PROCESSBARBEGIN(state, value) {
+            state.processBar.hide = false;
+            state.processBar.process = value + 'rem';
         },
-        END(state) {
-            state.process = '10rem';
+        PROCESSBAREND(state) {
+            state.processBar.process = '10rem';
         },
-        HIDE(state) {
-            state.hide = true;
-        },
-        SHOW(state) {
-            state.hide = false;
+        PROCESSBARHIDE(state) {
+            state.processBar.hide = true;
         }
     },
     actions: {

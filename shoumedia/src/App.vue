@@ -1,7 +1,8 @@
 <template>
 	<div id="app">
-    <div class="process">
-      <div class="process-go" v-show="!hide"  v-bind:style="{width:process}"></div>
+    <div class="processBar" v-show="!processBar.hide">
+      <div class="process-bg"></div>
+      <div class="process-go"  v-bind:style="{width:processBar.process}"></div>
     </div>
 		<div class="head">
 			<i class="el-icon-arrow-left" v-show="backShow" @click="back"></i>
@@ -23,43 +24,57 @@
 </template>
 
 <script>
-  import {mapMutations,mapActions,mapState} from 'vuex';
+    import {
+        mapMutations,
+        mapActions,
+        mapState
+    } from 'vuex';
     export default {
         name: 'app',
-        data(){
-          return {
-            process:0,
-            hide:false
-          }
-        },
-        computed:{
-          backShow:function(){
-            if(this.$route.name=="index"){
-              return false;
-            }else{
-              return true;
+        data() {
+            return {
+                process: 0,
+                hide: false
             }
-          },
-          ...mapState(['process','hide'])
         },
-        methods:{
-          ...mapMutations({
-            logout:'LOGOUT'
-          }),
-          ...mapActions(['processBegin','processEnd']),
-          back(){
-            this.$router.go(-1);
-          },
-					logoutSure(){
-						var _this=this;
-						_this.$confirm("确定退出登陆？","提示",{
-							type:"info"
-						}).then(function(){
-							 _this.logout();
-						});
-					}
+        computed: {
+            backShow: function() {
+                if (this.$route.name == "index") {
+                    return false;
+                } else {
+                    return true;
+                }
+            },
+            ...mapState({
+                processBar: state => state.processBar
+            })
         },
-        mounted(){
+        methods: {
+            ...mapMutations({
+                logout: 'LOGOUT'
+            }),
+            ...mapActions(['processBegin', 'processEnd']),
+            back() {
+                this.$router.go(-1);
+            },
+            logoutSure() {
+                var _this = this;
+                _this.$confirm("确定退出登陆？", "提示", {
+                    type: "info"
+                }).then(function() {
+                    _this.logout();
+                });
+            }
+        },
+        mounted() {
+            var _this = this;
+            this.$router.beforeEach(function(to, from, next) {
+                _this.processBarBegin();
+                next();
+            });
+            this.$router.afterEach(function() {
+                _this.processBarEnd();
+            });
         }
     }
 </script>

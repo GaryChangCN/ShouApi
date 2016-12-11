@@ -1,3 +1,4 @@
+delete require.cache[require.resolve('../myModules/getAchievement')];
 var getAchievement=require('../myModules/getAchievement')
 
 module.exports=function*(next){
@@ -9,10 +10,17 @@ module.exports=function*(next){
             return getAchievement.getAchievement(value.cookie,value.md5);
         })
         .then(function(value){
-            return {
-                err:false,
-                data:value.data,
-                state:value.state
+            if(value){
+                return {
+                    err:false,
+                    data:value.data,
+                    state:value.state
+                }
+            }else{
+                return {
+                    err:"暂时没有出成绩",
+                    state:true
+                }
             }
         })
         this.body = a;
