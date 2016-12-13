@@ -15,13 +15,14 @@ module.exports=function*(next){
                 }
             })
         }).then(function(){
-            return _this.db.User.findOne({username:data.username}).exec()
+            return _this.db.User.findOne({username:data.username}).exec();
         })
         this.body = {
             err:true,
             data:a
         };
     } catch (error) {
+        console.log(error);
         yield next;
     }
 }

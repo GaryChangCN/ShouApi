@@ -23,6 +23,7 @@ app.context.db=db;
 
 var cors=require('./router/cors');
 var err=require('./router/err');
+
 app.on('error', function(err, ctx) {
     logger.error(err.message);
     logger.error(err);
@@ -37,5 +38,5 @@ router.get('/getachievement/:username',cors,require('./router/getAchievement'),e
 
 
 app.listen(8123, function () {
-    logger.info("listen on 8132");
+    console.log("listen on 8132");
 });

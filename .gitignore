@@ -24,6 +24,7 @@ api.js
 shoumedia/node_modules
 server/node_modules
 shoumedia/dist
+*.vscode
 /v1.0/ser/shouTemp.txt
 # =========================
 # Operating System Files
