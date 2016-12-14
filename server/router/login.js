@@ -5,7 +5,7 @@ module.exports=function*(next){
             username:this.request.body.username,
             password:this.request.body.password
         }
-        var a=yield require('./../myModules/login')(data).then(function(value){
+        var a=yield require('./../lib/login')(data).then(function(value){
             return  _this.db.User.count({username:value.username}).exec().then(function(sum){
                 if(sum==0){
                     var s=new _this.db.User(value);

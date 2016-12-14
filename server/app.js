@@ -1,8 +1,8 @@
 require('events').EventEmitter.prototype._maxListeners = 100;
 var koa = require('koa');
 var app = koa();
-var logger = require('./myModules/log');
-var db = require('./myModules/mongo');
+var logger = require('./lib/log');
+var db = require('./lib/mongo');
 
 var formidable = require('koa-formidable')
 app.use(formidable({

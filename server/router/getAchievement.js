@@ -1,5 +1,5 @@
-delete require.cache[require.resolve('../myModules/getAchievement')];
-var getAchievement = require('../myModules/getAchievement')
+delete require.cache[require.resolve('../lib/getAchievement')];
+var getAchievement = require('../lib/getAchievement')
 
 module.exports = function*(next) {
     try {
@@ -28,7 +28,7 @@ module.exports = function*(next) {
         }.bind(this);
         var a = yield fun(username);
         if(!!a.err||typeof a.data=="string"){
-            a=yield require('../myModules/refreshLogin')(info,this).then(function(){
+            a=yield require('../lib/refreshLogin')(info,this).then(function(){
                 return fun(username);
             });
         }

@@ -1,4 +1,4 @@
-var getCard = require('../myModules/getCard');
+var getCard = require('../lib/getCard');
 
 module.exports = function*(next) {
     try {
@@ -20,7 +20,7 @@ module.exports = function*(next) {
         }
         var getCardInfo = yield getc(username);
         if(typeof getCardInfo.data=="string"){
-            getCardInfo =yield require('../myModules/refreshLogin')(info,this).then(function(){
+            getCardInfo =yield require('../lib/refreshLogin')(info,this).then(function(){
                 return getc(username);
             });
         }
