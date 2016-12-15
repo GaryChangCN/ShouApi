@@ -7,12 +7,7 @@ module.exports=function*(next){
         }
         var a=yield require('./../lib/login')(data).then(function(value){
             return  _this.db.User.count({username:value.username}).exec().then(function(sum){
-                if(sum==0){
-                    var s=new _this.db.User(value);
-                    return s.save();
-                }else{
-                    return _this.db.User.update({username:value.username},value).exec();
-                }
+                return _this.db.User.update({username:value.username},value,{upsert:true}).exec();
             })
         }).then(function(){
             return _this.db.User.findOne({username:data.username}).exec();
@@ -22,7 +17,7 @@ module.exports=function*(next){
             data:a
         };
     } catch (error) {
-        console.log(error);
+        this.logger.error(error);
         yield next;
     }
 }

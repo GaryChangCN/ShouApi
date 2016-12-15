@@ -20,6 +20,7 @@ app.use(router.allowedMethods())
 
 
 app.context.db=db;
+app.context.logger=logger;
 
 var cors=require('./router/cors');
 var err=require('./router/err');
@@ -34,6 +35,7 @@ router.get('/getbalance/:username',cors,require('./router/getBalance'),err);
 router.get('/getlog/:username/:start/:end',cors,require('./router/getLog'),err);
 router.get('/getnews',cors,require('./router/getNews'),err);
 router.get('/getachievement/:username',cors,require('./router/getAchievement'),err);
+router.get('/getClass/:username',cors,require('./router/getClass'),err)
 
 
 

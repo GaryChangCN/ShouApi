@@ -7,7 +7,7 @@ var get = function(cookie, url) {
             headers: {
                 'Cookie': cookie
             }
-        }, function(err, res, body) {
+        },{encoding:"binary"}, function(err, res, body) {
             if (err) {
                 reject({
                     err: true
@@ -29,5 +29,26 @@ var get = function(cookie, url) {
         });
     })
 }
+var getUrp = function(cookie, url) {
+    var iconv=require("iconv-lite");
+    return new Promise(function(resolve, reject) {
+        request.get({
+            url: url,
+            headers: {
+                'Cookie': cookie
+            }
+        }, function(err, res, body) {
+        }).pipe(iconv.decodeStream('gbk')).collect(function(err,body){
+            if(err){
+                reject(err);
+            }else{
+                resolve(body);
+            }
+        })
+    });
+}
 
-exports.get = get;
+module.exports={
+    get,
+    getUrp
+}

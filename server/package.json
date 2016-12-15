@@ -10,6 +10,8 @@
   "license": "ISC",
   "dependencies": {
     "formidable": "^1.0.17",
+    "iconv-lite": "^0.4.15",
+    "jsdom": "^9.8.3",
     "koa": "^1.2.4",
     "koa-formidable": "^1.0.0",
     "koa-router": "^5.4.0",

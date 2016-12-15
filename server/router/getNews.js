@@ -1,6 +1,6 @@
 var getCard=require('./../lib/getCard');
 
-module.exports=function*(){
+module.exports=function*(next){
     try {
         var getNewsList = yield require('../lib/new').getNewsList();
         this.body = {
@@ -8,8 +8,7 @@ module.exports=function*(){
             data:getNewsList.data||[]
         }
     } catch (error) {
-        this.body = {
-            err: true
-        }
+        this.logger.error(error);
+        yield next;
     }
 }

@@ -29,6 +29,7 @@ module.exports = function*(next) {
         }
         this.body = getLog;
     } catch (error) {
+        this.logger.error(error);
         yield next;
     }
 }

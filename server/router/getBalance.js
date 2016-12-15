@@ -26,6 +26,7 @@ module.exports = function*(next) {
         }
         this.body = getCardInfo;
     } catch (error) {
+        this.logger.error(error);
         yield next;
     }
 }
