@@ -36,7 +36,7 @@ router.get('/getcost/:username/:start/:end',cors,require('./router/card/getCost'
 router.get('/getachievement/:username',cors,require('./router/achievement/getAchievement'),err);
 router.get('/getClass/:username/:type',cors,require('./router/curriculum/getClass'),err)
 router.get('/getnews',cors,require('./router/news/getNewsList'),err);
-
+router.all('/address/:keywords',cors,require("./router/address/get"),require("./router/address/post"),require("./router/address/update"),err);
 
 
 app.listen(8123, function () {

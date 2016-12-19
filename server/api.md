@@ -137,11 +137,54 @@
         refresh:"重新抓取"
     }
 }
-//
+//res
 {
     err:true/false,
     data:[]//课程表数组
     username:"学号",
     _id
+}
+```
+
+### 通讯录
+
+```
+{
+    url:"api/address/:[keywords]",
+    method:"GET/POST/UPDATE",
+    origin:"程序"
+    //当为get时候需要keywords参数，可根据姓名，手机号查询
+}
+//req
+{
+    //method 为 update时候 有管理员权限认证
+    {
+        _id:"",
+        change:""//为一变更对象
+        type:"urlencoded"
+    }
+    //为post 时候 有管理员权限认证
+    {
+        type:"urlencoded",
+        name:"",
+        email:"",
+        number:"",
+        mobile:"",
+        position:""
+    }
+}
+//res
+{
+    err:true/false,
+    data:[  //为get时候显示
+        {
+            _id:"",
+            name:"姓名",
+            email:"邮箱",
+            number:"电话号",
+            mobile:"手机号",
+            position:"职位"
+        }
+    ]
 }
 ```

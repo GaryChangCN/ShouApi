@@ -12,18 +12,39 @@ var userSchema = new Schema({
     cookie: String
 });
 
-var curriculumScema=new Schema({
+var currScema=new Schema({
     username:String,
     classData:{
         default:[],
         type:Array
     }
 })
+var addressSchema=new Schema({
+    name:String,
+    position:{
+        type:String,
+        default:"未知"
+    },
+    mobile:{
+        type:String,
+        default:"未知"
+    },
+    number:{
+        type:String,
+        default:"未知"
+    },
+    email:{
+        type:String,
+        default:"未知"
+    }
+})
 
 var User = mongoose.model('User', userSchema);
-var Curriculum = mongoose.model('Curriculum', curriculumScema);
+var Curr = mongoose.model('Curriculum', currScema);
+var Address=mongoose.model('Address',addressSchema);
 
 module.exports = {
     User,
-    Curriculum
+    Curr,
+    Address
 };
