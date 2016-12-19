@@ -8,65 +8,41 @@ var get = function(cookie, url) {
                 'Cookie': cookie
             }
         }, function(err, res, body) {
-            if(err){
+            if (err) {
                 reject(err);
-            }else{
-                var b=body.toLocaleLowerCase();
-                console.log(b);
-                resolve({
-                    data:body.data
-                });
+            } else {
+                var b = body.toLocaleLowerCase();
+                var data = typeof b == "string" ? JSON.parse(b) : b;
+                if(typeof data.data=="string" || data.code=="-1"){
+                    resolve({
+                        expire:true
+                    });
+                }else{
+                    resolve(data);
+                }
             }
         })
     });
-    // return new Promise(function(resolve, reject) {
-    //     request.get({
-    //         url: url,
-    //         headers: {
-    //             'Cookie': cookie
-    //         }
-    //     },{encoding:"binary"}, function(err, res, body) {
-    //         if (err) {
-    //             reject({
-    //                 err: err
-    //             });
-    //         } else {
-    //             var body=body.toLocaleLowerCase();
-    //             var body = JSON.parse(body);
-    //             if (body.Code == '-1') {
-    //                 reject({
-    //                     state: false
-    //                 });
-    //             } else {
-    //                 resolve({
-    //                     data: body.data,
-    //                     state: true
-    //                 });
-    //             }
-    //         }
-    //     });
-    // })
 }
 var getUrp = function(cookie, url) {
-    var iconv=require("iconv-lite");
+    var iconv = require("iconv-lite");
     return new Promise(function(resolve, reject) {
         request.get({
             url: url,
             headers: {
                 'Cookie': cookie
             }
-        }, function(err, res, body) {
-        }).pipe(iconv.decodeStream('gbk')).collect(function(err,body){
-            if(err){
+        }, function(err, res, body) {}).pipe(iconv.decodeStream('gbk')).collect(function(err, body) {
+            if (err) {
                 reject(err);
-            }else{
+            } else {
                 resolve(body);
             }
         })
     });
 }
 
-module.exports={
+module.exports = {
     get,
     getUrp
 }

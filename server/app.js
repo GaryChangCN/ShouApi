@@ -2,7 +2,7 @@ require('events').EventEmitter.prototype._maxListeners = 100;
 var koa = require('koa');
 var app = koa();
 var logger = require('./lib/log');
-var db = require('./lib/mongo');
+var db = require('./lib/db');
 
 var formidable = require('koa-formidable')
 app.use(formidable({
@@ -30,12 +30,12 @@ app.on('error', function(err, ctx) {
     logger.error(err);
 });
 
-router.post('/login',cors,require('./router/login'),err);
-router.get('/getbalance/:username',cors,require('./router/getBalance'),err);
-router.get('/getlog/:username/:start/:end',cors,require('./router/getLog'),err);
-router.get('/getnews',cors,require('./router/getNews'),err);
-router.get('/getachievement/:username',cors,require('./router/getAchievement'),err);
+router.post('/login',cors,require('./router/login/login'),err);
+router.get('/getbalance/:username',cors,require('./router/card/getBalance'),err);
+router.get('/getcost/:username/:start/:end',cors,require('./router/card/getCost'),err);
+router.get('/getachievement/:username',cors,require('./router/achievement/getAchievement'),err);
 router.get('/getClass/:username/:type',cors,require('./router/curriculum/getClass'),err)
+router.get('/getnews',cors,require('./router/news/getNewsList'),err);
 
 
 
