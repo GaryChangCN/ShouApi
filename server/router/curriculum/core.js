@@ -1,6 +1,6 @@
 var request = require("request");
 var jsdom = require("jsdom");
-var db=require('./../../lib/mongo');
+var db=require('./../../lib/db');
 module.exports=function(username){
     return db.User.findOne({ username: username }, 'password username').exec().then(function(info){
         return require('../../lib/getUrpCookie')(info);

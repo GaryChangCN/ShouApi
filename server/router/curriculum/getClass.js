@@ -4,7 +4,7 @@ module.exports = function*(next) {
         var username = this.params.username;
         var _this = this;
         if (type == "cache") {
-            var data = yield this.db.Curriculum.findOne({ username: username }).exec().then(function(value) {
+            var data = yield this.db.Curr.findOne({ username: username }).exec().then(function(value) {
                 if (value) {
                     return value;
                 } else {
@@ -13,7 +13,7 @@ module.exports = function*(next) {
                             username,
                             classData
                         }
-                        _this.db.Curriculum.update({ username: username }, { $set: d }, { upsert: true }).exec();
+                        _this.db.Curr.update({ username: username }, { $set: d }, { upsert: true }).exec();
                         return d;
                     });
                 }
@@ -24,7 +24,7 @@ module.exports = function*(next) {
                     username,
                     classData
                 }
-                _this.db.Curriculum.update({ username: username }, { $set: d }, { upsert: true }).exec();
+                _this.db.Curr.update({ username: username }, { $set: d }, { upsert: true }).exec();
                 return d;
             });
         }
