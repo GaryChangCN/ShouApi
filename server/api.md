@@ -188,3 +188,35 @@
     ]
 }
 ```
+
+### 获取详细信息
+
+```
+{
+    url:"api/getinfoplus/:username/:type,
+    method:"GET",
+    origin:"官网",
+    type:{
+        cache:"从缓存中获取",
+        refresh:"重新抓取"
+    }
+}
+//res
+{
+    err:true/false,
+    data:{
+        username,
+        name,
+        idCard,
+        national,
+        highSchoolName,
+        highSchoolExam,
+        address,
+        parents,
+        college,
+        major,
+        className,
+        room
+    }
+}
+```
