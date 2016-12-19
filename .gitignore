@@ -23,6 +23,7 @@ api.js
 /node_modules
 shoumedia/node_modules
 server/node_modules
+server/public/pic/*.webp
 shoumedia/dist
 *.vscode
 /v1.0/ser/shouTemp.txt
