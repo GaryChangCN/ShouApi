@@ -12,10 +12,18 @@ var userSchema = new Schema({
     cookie: String
 });
 
+var curriculumScema=new Schema({
+    username:String,
+    classData:{
+        default:[],
+        type:Array
+    }
+})
+
 var User = mongoose.model('User', userSchema);
-
-
+var Curriculum = mongoose.model('Curriculum', curriculumScema);
 
 module.exports = {
-    User: User
+    User,
+    Curriculum
 };

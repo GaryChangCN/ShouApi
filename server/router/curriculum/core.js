@@ -1,14 +1,15 @@
 var request = require("request");
 var jsdom = require("jsdom");
-module.exports = function*(next) {
-    try {
-        var username = this.params.username;
-        var info = yield this.db.User.findOne({ username: username }, 'password username');
-        var cookieArr = yield require("./../lib/getUrpCookie")(info);
+var db=require('./../../lib/mongo');
+module.exports=function(username){
+    return db.User.findOne({ username: username }, 'password username').exec().then(function(info){
+        return require('../../lib/getUrpCookie')(info);
+    }).then(function(cookieArr){
         var cookie = cookieArr[0].split(";").shift();
         var url = "http://urp.shou.edu.cn/xkAction.do?actionType=6";
-        var res = yield require("../lib/get").getUrp(cookie, url);
-        var p =yield new Promise(function(resolve, reject) {
+        return require("./../../lib/get").getUrp(cookie, url);
+    }).then(function(res){
+        return new Promise(function(resolve, reject) {
             jsdom.env(res, [], function(err, window) {
                 if (err) {
                     reject(err);
@@ -76,12 +77,5 @@ module.exports = function*(next) {
                 }
             })
         });
-        this.body={
-            err:false,
-            data:p
-        };
-    } catch (error) {
-        this.logger.error(error);
-        yield next;
-    }
+    })
 }

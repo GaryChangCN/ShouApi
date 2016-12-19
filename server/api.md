@@ -58,7 +58,7 @@
 //可能返回数据时间会稍长，因为爬取cookie过期，重新模拟登录
 ```
 {
-    url:"api/getLog/:username/:start/:end,
+    url:"api/getCost/:username/:start/:end,
     method:"GET",
     origin:"ishou"
     //这里start、end格式如20160615
@@ -122,5 +122,26 @@
             cjlrfsdm:"001"//未知
         }
     ]
+}
+```
+
+### 获取课程表
+
+```
+{
+    url:"api/getclass/:username/:type,
+    method:"GET",
+    origin:"官网",
+    type:{
+        cache:"从缓存中获取",
+        refresh:"重新抓取"
+    }
+}
+//
+{
+    err:true/false,
+    data:[]//课程表数组
+    username:"学号",
+    _id
 }
 ```
