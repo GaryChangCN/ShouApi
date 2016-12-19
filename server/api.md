@@ -124,3 +124,24 @@
     ]
 }
 ```
+
+### 获取课程表
+
+```
+{
+    url:"api/getclass/:username/:type,
+    method:"GET",
+    origin:"官网",
+    type:{
+        cache:"从缓存中获取",
+        refresh:"重新抓取"
+    }
+}
+//
+{
+    err:true/false,
+    data:[]//课程表数组
+    username:"学号",
+    _id
+}
+```
