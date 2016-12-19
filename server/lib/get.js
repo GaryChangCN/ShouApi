@@ -7,27 +7,45 @@ var get = function(cookie, url) {
             headers: {
                 'Cookie': cookie
             }
-        },{encoding:"binary"}, function(err, res, body) {
-            if (err) {
-                reject({
-                    err: true
+        }, function(err, res, body) {
+            if(err){
+                reject(err);
+            }else{
+                var b=body.toLocaleLowerCase();
+                console.log(b);
+                resolve({
+                    data:body.data
                 });
-            } else {
-                var body=body.toLocaleLowerCase();
-                var body = JSON.parse(body);
-                if (body.Code == '-1') {
-                    reject({
-                        state: false
-                    });
-                } else {
-                    resolve({
-                        data: body.data,
-                        state: true
-                    });
-                }
             }
-        });
-    })
+        })
+    });
+    // return new Promise(function(resolve, reject) {
+    //     request.get({
+    //         url: url,
+    //         headers: {
+    //             'Cookie': cookie
+    //         }
+    //     },{encoding:"binary"}, function(err, res, body) {
+    //         if (err) {
+    //             reject({
+    //                 err: err
+    //             });
+    //         } else {
+    //             var body=body.toLocaleLowerCase();
+    //             var body = JSON.parse(body);
+    //             if (body.Code == '-1') {
+    //                 reject({
+    //                     state: false
+    //                 });
+    //             } else {
+    //                 resolve({
+    //                     data: body.data,
+    //                     state: true
+    //                 });
+    //             }
+    //         }
+    //     });
+    // })
 }
 var getUrp = function(cookie, url) {
     var iconv=require("iconv-lite");
