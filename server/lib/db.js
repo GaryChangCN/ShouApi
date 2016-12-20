@@ -9,7 +9,9 @@ var userSchema = new Schema({
     md5: String,
     name: String,
     college: String,
-    cookie: String
+    cookie: String,
+    updateTime:Date,
+    urpPassword:String
 });
 
 var currScema = new Schema({

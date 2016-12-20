@@ -33,10 +33,11 @@ module.exports = function*(next) {
             });
         });
         if(!!a){
+            a.password=password;
+            a.updateTime=new Date();
             yield this.db.User.update({username:username},{$set:a},{upsert:true}).exec();
             this.body={
-                err:false,
-                data:a
+                err:false
             }
         }else{
             this.body={
