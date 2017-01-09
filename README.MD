@@ -8,7 +8,7 @@
 
 ## 地址 
 
-[测试版](http://www.shouedu.cn)
+[测试版](http://www.shouedu.cn) 暂时停止
 
 ## 更新
 
