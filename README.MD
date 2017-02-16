@@ -20,6 +20,8 @@
 
 ## 更新日志
 
+*2017-02-16
+	* 使用 superagent + cherrio 代替 request + jsdom
 * 2016-12-19
 	* 更新了一些接口，[接口文档](server/api.md)
 * 2016-04-02
