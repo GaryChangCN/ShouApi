@@ -87,7 +87,7 @@
 {
     url:"/api/getachievement/:username",
     method:"GET",
-    origin:"ishou"
+    origin:"urp"
 }
 //res
 {
@@ -113,7 +113,7 @@
 {
     url:"api/getclass/:username/:type,
     method:"GET",
-    origin:"官网",
+    origin:"urp",
     type:{
         cache:"从缓存中获取若没有则更新缓存并返回",
         refresh:"重新抓取"
