@@ -6,10 +6,8 @@ mongoose.Promise = global.Promise;
 var userSchema = new Schema({
     username: String,
     password: String,
-    md5: String,
     name: String,
     college: String,
-    cookie: String,
     updateTime:Date,
     urpPassword:String
 });
