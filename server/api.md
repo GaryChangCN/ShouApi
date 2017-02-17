@@ -79,26 +79,6 @@
 }
 ```
 
-### 获取新闻列表
-
-//可能返回数据时间会稍长，因为爬取cookie过期，重新模拟登录
-```
-{
-    url:"/api/getnews",
-    method:"GET",
-    origin:"ishou"
-}
-//res
-{
-    err:false,
-    data:[
-        {
-            channelid:"频道编号",
-            channelname:"频道名称",
-            parentchannelid:"父频道id"
-        }
-    ]
-}
 ```
 
 ### 获取成绩
@@ -112,14 +92,16 @@
 //res
 {
     err:"",//false or 暂时没有出成绩
+    have:true/false  //有没有出成绩
     data:[
         {
             kch:"课程号",
             kxh:"课序号",
             kcm:"课程名",
+            kcywm:"课程英文名",
             xf:"学分",
-            kccj:"课程成绩",
-            cjlrfsdm:"001"//未知
+            kcsx:"课程属性",
+            cj:"成绩"
         }
     ]
 }
@@ -133,7 +115,7 @@
     method:"GET",
     origin:"官网",
     type:{
-        cache:"从缓存中获取",
+        cache:"从缓存中获取若没有则更新缓存并返回",
         refresh:"重新抓取"
     }
 }
@@ -141,8 +123,6 @@
 {
     err:true/false,
     data:[]//课程表数组
-    username:"学号",
-    _id
 }
 ```
 
