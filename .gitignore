@@ -15,7 +15,9 @@ $RECYCLE.BIN/
 *.msp
 /v1.0/ser/conn.php
 /v1.0/ser/xszcconn.php
-/server/public/pic/*.webp
+!.webp
+!.gitkeep
+/server/log/
 # Windows shortcuts
 api.js
 *.lnk

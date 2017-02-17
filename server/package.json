@@ -9,6 +9,7 @@
   "author": "gary",
   "license": "ISC",
   "dependencies": {
+    "cheerio": "^0.22.0",
     "formidable": "^1.0.17",
     "iconv-lite": "^0.4.15",
     "jsdom": "^9.8.3",
@@ -18,6 +19,8 @@
     "log4js": "^0.6.38",
     "mongoose": "^4.6.4",
     "phantom": "^3.2.1",
-    "request": "^2.75.0"
+    "request": "^2.75.0",
+    "superagent": "^3.4.3",
+    "superagent-charset": "^1.1.1"
   }
 }

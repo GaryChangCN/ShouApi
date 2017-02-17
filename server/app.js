@@ -17,8 +17,6 @@ router.prefix('/api');
 app.use(router.routes());
 app.use(router.allowedMethods())
 
-
-
 app.context.db=db;
 app.context.logger=logger;
 
@@ -31,13 +29,14 @@ app.on('error', function(err, ctx) {
 });
 
 router.post('/login',cors,require('./router/login/login'),err);
-router.get('/getbalance/:username',cors,require('./router/card/getBalance'),err);
-router.get('/getcost/:username/:start/:end',cors,require('./router/card/getCost'),err);
-router.get('/getachievement/:username',cors,require('./router/achievement/getAchievement'),err);
-router.get('/getClass/:username/:type',cors,require('./router/curriculum/getClass'),err)
-router.get('/getnews',cors,require('./router/news/getNewsList'),err);
-router.all('/address/:keywords',cors,require("./router/address/get"),require("./router/address/post"),require("./router/address/update"),err);
-router.get('/getinfoplus/:username/:type',cors,require('./router/infoPlus/getInfoPlus'),err);
+router.post('/urplogin',cors,require('./router/login/urpLogin'),err);
+router.get('/getachievement/:username',cors,require('./router/getAchievement'),err);
+router.get('/getcurriculum/:username/:type',cors,require('./router/getCurriculum'),err)
+// router.get('/getbalance/:username',cors,require('./router/card/getBalance'),err);
+// router.get('/getcost/:username/:start/:end',cors,require('./router/card/getCost'),err);
+// router.get('/getnews',cors,require('./router/news/getNewsList'),err);
+// router.all('/address/:keywords',cors,require("./router/address/get"),require("./router/address/post"),require("./router/address/update"),err);
+// router.get('/getinfoplus/:username/:type',cors,require('./router/infoPlus/getInfoPlus'),err);
 
 
 app.listen(8123, function () {
