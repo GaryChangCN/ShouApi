@@ -175,7 +175,7 @@
 {
     url:"api/getinfoplus/:username/:type,
     method:"GET",
-    origin:"官网",
+    origin:"urp",
     type:{
         cache:"从缓存中获取",
         refresh:"重新抓取"
@@ -196,7 +196,8 @@
         college,
         major,
         className,
-        room
+        room,
+        political
     }
 }
 ```

@@ -8,8 +8,8 @@ var userSchema = new Schema({
     password: String,
     name: String,
     college: String,
-    updateTime:Date,
-    urpPassword:String
+    updateTime: Date,
+    urpPassword: String
 });
 
 var currScema = new Schema({
@@ -44,6 +44,7 @@ var infoPlusSchema = new Schema({
         type: String,
         default: "未知"
     },
+    political: { type: String, default: "未知" },
     idCard: { type: String, default: "未知" },
     national: { type: String, default: "未知" },
     highSchoolExam: { type: String, default: "未知" },
@@ -53,7 +54,9 @@ var infoPlusSchema = new Schema({
     college: { type: String, default: "未知" },
     major: { type: String, default: "未知" },
     className: { type: String, default: "未知" },
-    room: { type: String, default: "未知" }
+    room: { type: String, default: "未知" },
+    phoneNumber:{ type: String, default: "未知" },
+    email:{ type: String, default: "未知" }
 })
 
 var User = mongoose.model('User', userSchema);
