@@ -31,7 +31,7 @@ var get = function(username, urpPassword) {
             var list = [];
             $("input").each(function(i){
                 list.push($(this).val());
-            })
+            });
             infoPlus.phoneNumber=list[1];
             infoPlus.email=list[3];
             require("./../lib/getpic")(username,urpPassword);
