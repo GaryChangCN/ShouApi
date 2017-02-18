@@ -1,14 +1,27 @@
 {
   "name": "shoumedia",
   "version": "1.0.0",
-  "description": "A Vue.js project",
+  "description": "shanghai ocean university urp search system",
   "author": "GaryChangCN <garychangcn@hotmail.com>",
-  "private": true,
+  "main": "app.js",
   "scripts": {
-    "dev": "node build/dev-server.js",
-    "build": "node build/build.js"
+    "dev-server": "supervisor ./server/app.js",
+    "dev-fe": "node shoumedia/build/dev-server.js",
+    "build-fe": "node shoumedia/build/build.js"
   },
+  "license": "ISC",
   "dependencies": {
+    "cheerio": "^0.22.0",
+    "formidable": "^1.0.17",
+    "iconv-lite": "^0.4.15",
+    "koa": "^1.2.4",
+    "koa-formidable": "^1.0.0",
+    "koa-router": "^5.4.0",
+    "log4js": "^0.6.38",
+    "mongoose": "^4.6.4",
+    "phantom": "^3.2.1",
+    "superagent": "^3.4.3",
+    "superagent-charset": "^1.1.1",
     "axios": "^0.15.3",
     "vue": "^2.0.1",
     "vue-axios": "^1.2.2",
