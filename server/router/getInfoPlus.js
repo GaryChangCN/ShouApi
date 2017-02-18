@@ -34,8 +34,13 @@ var get = function(username, urpPassword) {
             });
             infoPlus.phoneNumber=list[1];
             infoPlus.email=list[3];
-            require("./../lib/getpic")(username,urpPassword);
             return infoPlus;
+        });
+    }).then(function (infoPlus) {
+        return require("./../lib/getPic")(username,urpPassword).then(function(state){
+            if(state){
+                return infoPlus;
+            }
         });
     });
 }
