@@ -56,7 +56,8 @@ var infoPlusSchema = new Schema({
     className: { type: String, default: "未知" },
     room: { type: String, default: "未知" },
     phoneNumber:{ type: String, default: "未知" },
-    email:{ type: String, default: "未知" }
+    email:{ type: String, default: "未知" },
+    pic:{ type: String, default: "未知" }
 })
 
 var User = mongoose.model('User', userSchema);

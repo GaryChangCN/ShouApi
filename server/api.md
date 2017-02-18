@@ -131,7 +131,7 @@
 {
     url:"api/address/:[keywords]",
     method:"GET/POST/UPDATE",
-    origin:"程序"
+    origin:"app"
     //当为get时候需要keywords参数，可根据姓名，手机号查询
 }
 //req
@@ -184,7 +184,6 @@
 {
     err:true/false,
     data:{
-        username,
         name,
         idCard,
         national,
@@ -196,7 +195,10 @@
         major,
         className,
         room,
-        political
+        political,
+        pic//图片名称
     }
 }
+//在获取infoPlus过程中会获取校园卡照片，保存成"学号".jpg格式在public/pic下
+//若图片已存在，则不会重新获取图片
 ```

@@ -11,7 +11,7 @@ var get = function(username, urpPassword) {
         var infoPlus = {
             name: list[3],
             idCard: list[13],
-            national: list[24],
+            national: list[25],
             political: list[31],
             highSchoolExam: list[37],
             highSchoolName: list[35],
@@ -20,7 +20,8 @@ var get = function(username, urpPassword) {
             college: list[53],
             major: list[55],
             className: list[61],
-            room: list[73]
+            room: list[73],
+            pic:username+".jpg"
         }
         return infoPlus;
     }).then(function(infoPlus) {
@@ -33,9 +34,10 @@ var get = function(username, urpPassword) {
             })
             infoPlus.phoneNumber=list[1];
             infoPlus.email=list[3];
+            require("./../lib/getpic")(username,urpPassword);
             return infoPlus;
-        })
-    })
+        });
+    });
 }
 
 module.exports = function*(next) {
