@@ -22,10 +22,8 @@ function getPic(username, urpPassword) {
                         resolve(true);
                     });
                     request.get(url).set({
-                        "Cookie": cookie,
-                        "Accept": "image/jpg,image/*,*/*;q=0.8",
-                        "Cache-Control": "no-cache"
-                    }).pipe(file);
+                        "Cookie": cookie
+                    }).accept("jpg").pipe(file);
                 }
             });
         }else{
