@@ -1,4 +1,4 @@
-module.exports=function*(next){
-    this.set('Access-Control-Allow-Origin', '*');
-    yield next;
+module.exports=async function(ctx,next){
+    ctx.set('Access-Control-Allow-Origin', '*');
+    await next();
 }

@@ -1,14 +1,14 @@
 var cheerio=require("cheerio");
-module.exports = function*(next) {
+module.exports =async function(ctx,next) {
     try {
-        var username = this.params.username;
-        var info = yield require("./login/getInfo")(username);
+        var username = ctx.params.username;
+        var info = await require("./login/getInfo")(username);
         var url = "http://urp.shou.edu.cn/bxqcjcxAction.do";
-        var res=yield require("./../lib/getUrpCore")(url,{username,password:info.urpPassword});
+        var res=await require("./../lib/getUrpCore")(url,{username,password:info.urpPassword});
         var $=cheerio.load(res,{normalizeWhitespace:true});
         var childLen=$(".displayTag").find("tr").length;
         if(childLen<=1){
-            this.body={
+            ctx.body={
                 err:false,
                 have:false
             }
@@ -27,10 +27,10 @@ module.exports = function*(next) {
                     });
                 }
             })
-            this.body=list;
+            ctx.body=list;
         }
     } catch (error) {
-        this.logger.error(error);
-        yield next;
+        ctx.logger.error(error);
+        await next();
     }
 }

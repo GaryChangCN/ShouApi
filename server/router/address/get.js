@@ -1,18 +1,18 @@
-module.exports = function*(next) {
-    if (this.method.toUpperCase() == "GET") {
+module.exports =async function(ctx,next) {
+    if (ctx.method.toUpperCase() == "GET") {
         try {
-            var keywords = this.params.keywords;
+            var keywords = ctx.params.keywords;
             var reg = new RegExp(keywords);
-            var a = yield this.db.Address.find({ $or: [{ name: reg }, { mobile: reg }] }).exec();
-            this.body = {
+            var a = await ctx.db.Address.find({ $or: [{ name: reg }, { mobile: reg }] }).exec();
+            ctx.body = {
                 err: false,
                 data: a
             }
         } catch (error) {
-            this.logger.error(error);
-            yield next;
+            ctx.logger.error(error);
+            await next();
         }
     } else {
-        yield next;
+        await next();
     }
 }

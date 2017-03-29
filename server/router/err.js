@@ -1,5 +1,5 @@
-module.exports=function*(next){
-    this.body = {
+module.exports=async function(ctx,next){
+    ctx.body = {
         err: true
     }
 }

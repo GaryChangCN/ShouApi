@@ -1,17 +1,17 @@
-module.exports = function*(next) {
-    if (this.method.toUpperCase() == "PUT") {
+module.exports =async function(ctx,next) {
+    if (ctx.method.toUpperCase() == "PUT") {
         try {
-            var _id=this.request.body._id;
-            var change=this.request.body.change;
-            yield this.db.Address.update({_id:_id},{$set:change}).exec();
-            this.body={
+            var _id=ctx.request.body._id;
+            var change=ctx.request.body.change;
+            await ctx.db.Address.update({_id:_id},{$set:change}).exec();
+            ctx.body={
                 err:false
             }
         } catch (error) {
-            this.logger.error(error);
-            yield next;
+            ctx.logger.error(error);
+            await next();
         }
     } else {
-        yield next;
+        await next();
     }
 }

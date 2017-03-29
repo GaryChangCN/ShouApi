@@ -34,13 +34,12 @@ var get = function(username, urpPassword) {
     })
 }
 
-module.exports = function*(next) {
+module.exports =async function(ctx,next) {
     try {
-        var username = this.params.username;
-        var type = this.params.type;
-        var _this = this;
+        var username = ctx.params.username;
+        var type = ctx.params.type;
         if (type == "cache") {
-            var data = yield this.db.Curr.findOne({ username: username }).exec().then(function(value) {
+            var data = await ctx.db.Curr.findOne({ username: username }).exec().then(function(value) {
                 if (value) {
                     return value.classData
                 } else {
@@ -50,29 +49,29 @@ module.exports = function*(next) {
                                 username,
                                 classData
                             }
-                            _this.db.Curr.update({ username: username }, { $set: d }, { upsert: true }).exec();
+                            ctx.db.Curr.update({ username: username }, { $set: d }, { upsert: true }).exec();
                             return classData;
                         });
                     });
                 }
             });
         } else if (type == "fresh") {
-            var info = yield require("./login/getInfo")(username);
-            var data = yield get(info.username, info.urpPassword);
+            var info = await require("./login/getInfo")(username);
+            var data = await get(info.username, info.urpPassword);
             var d = {
                 username,
                 classData: data
             }
-            _this.db.Curr.update({ username: username }, { $set: d }, { upsert: true }).exec();
+            ctx.db.Curr.update({ username: username }, { $set: d }, { upsert: true }).exec();
         } else {
-            yield next;
+            await next();
         }
-        this.body = {
+        ctx.body = {
             err: false,
             data: data
         }
     } catch (error) {
-        this.logger.error(error);
-        yield next;
+        ctx.logger.error(error);
+        await next();
     }
 }

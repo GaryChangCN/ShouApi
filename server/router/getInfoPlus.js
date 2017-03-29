@@ -45,37 +45,36 @@ var get = function(username, urpPassword) {
     });
 }
 
-module.exports = function*(next) {
+module.exports =async function(ctx,next) {
     try {
-        var username = this.params.username;
-        var type = this.params.type;
-        var _this = this;
+        var username = ctx.params.username;
+        var type = ctx.params.type;
         if (type == "cache") {
-            var data = yield this.db.InfoPlus.findOne({ username: username }).exec().then(function(value) {
+            var data = await ctx.db.InfoPlus.findOne({ username: username }).exec().then(function(value) {
                 if (value) {
                     return value;
                 } else {
                     return require("./login/getInfo")(username).then(function(info) {
                         return get(info.username, info.urpPassword).then(function(data) {
-                            _this.db.InfoPlus.update({ username: username }, { $set: data }, { upsert: true }).exec();
+                            ctx.db.InfoPlus.update({ username: username }, { $set: data }, { upsert: true }).exec();
                             return data;
                         });
                     });
                 }
             });
         } else if (type == "fresh") {
-            var info = yield require("./login/getInfo")(username);
-            var data = yield get(info.username, info.urpPassword);
-            _this.db.InfoPlus.update({ username: username }, { $set: data }, { upsert: true }).exec();
+            var info = await require("./login/getInfo")(username);
+            var data = await get(info.username, info.urpPassword);
+            ctx.db.InfoPlus.update({ username: username }, { $set: data }, { upsert: true }).exec();
         } else {
-            yield next;
+            await next();
         }
-        this.body = {
+        ctx.body = {
             err: false,
             data: data
         }
     } catch (error) {
-        this.logger.error(error);
-        yield next;
+        ctx.logger.error(error);
+        await next();
     }
 }

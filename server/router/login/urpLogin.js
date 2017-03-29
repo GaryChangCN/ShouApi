@@ -2,11 +2,11 @@ var charset = require("superagent-charset");
 var request = require("superagent");
 charset(request);
 
-module.exports = function*(next) {
+module.exports =async function(ctx,next) {
     try {
-        var username = this.request.body.username;
-        var password = this.request.body.urppassword;
-        var valid = yield request.post("http://urp.shou.edu.cn/loginAction.do").charset('gbk').type('form').send({
+        var username = ctx.request.body.username;
+        var password = ctx.request.body.urppassword;
+        var valid = await request.post("http://urp.shou.edu.cn/loginAction.do").charset('gbk').type('form').send({
             zjh: username,
             mm: password
         }).then(function(res) {
@@ -21,19 +21,19 @@ module.exports = function*(next) {
             a.username = username;
             a.urpPassword = password;
             a.updateTime = new Date();
-            yield this.db.User.update({ username: username }, { $set: a }, { upsert: true }).exec();
-            this.body = {
+            await ctx.db.User.update({ username: username }, { $set: a }, { upsert: true }).exec();
+            ctx.body = {
                 urpPass: true,
                 err: false
             }
         } else {
-            this.body = {
+            ctx.body = {
                 urpPass: false,
                 err: true
             }
         }
     } catch (err) {
-        this.logger.error(err);
-        yield next;
+        ctx.logger.error(err);
+        await next();
     }
 }

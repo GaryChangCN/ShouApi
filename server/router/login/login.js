@@ -1,10 +1,9 @@
-module.exports = function*(next) {
+module.exports =async function(ctx,next) {
     try {
-        var _this = this;
         var request = require("request");
-        var username = this.request.body.username;
-        var password = this.request.body.password;
-        var a = yield new Promise(function(resolve, reject) {
+        var username = ctx.request.body.username;
+        var password = ctx.request.body.password;
+        var a = await new Promise(function(resolve, reject) {
             request.post({
                 url: 'http://202.121.64.37/User/login',
                 form: {
@@ -35,17 +34,17 @@ module.exports = function*(next) {
         if(!!a){
             a.password=password;
             a.updateTime=new Date();
-            yield this.db.User.update({username:username},{$set:a},{upsert:true}).exec();
-            this.body={
+            await ctx.db.User.update({username:username},{$set:a},{upsert:true}).exec();
+            ctx.body={
                 err:false
             }
         }else{
-            this.body={
+            ctx.body={
                 err:"用户名或者密码错误"
             }
         }
     } catch (err) {
-        this.logger.error(err);
-        yield next;
+        ctx.logger.error(err);
+        await next();
     }
 }

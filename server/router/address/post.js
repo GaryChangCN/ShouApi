@@ -1,28 +1,28 @@
-module.exports = function*(next) {
-    if (this.method.toUpperCase() == "POST") {
+module.exports =async function(ctx,next) {
+    if (ctx.method.toUpperCase() == "POST") {
         try {
-            var data=this.request.body;
+            var data=ctx.request.body;
             var name=data.name;
             var email=data.email;
             var number=data.number;
             var mobile=data.mobile;
             var position=data.position;
-            var a=new this.db.Address({
+            var a=new ctx.db.Address({
                 name,
                 email,
                 number,
                 mobile,
                 position
             });
-            yield a.save();
-            this.body={
+            await a.save();
+            ctx.body={
                 err:false
             }
         } catch (error) {
-            this.logger.error(error);
-            yield next;
+            ctx.logger.error(error);
+            await next();
         }
     } else {
-        yield next;
+        await next();
     }
 }
