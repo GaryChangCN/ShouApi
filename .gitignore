@@ -1,54 +1,13 @@
-# Windows image file caches
-Thumbs.db
-ehthumbs.db
-
-# Folder config file
-Desktop.ini
-
-# Recycle Bin used on file shares
-$RECYCLE.BIN/
-
-# Windows Installer files
-*.cab
-*.msi
-*.msm
-*.msp
 /v1.0/ser/conn.php
 /v1.0/ser/xszcconn.php
-/server/public/pic/*.webp
-# Windows shortcuts
+/server/log/
+/server/public/pic/
 api.js
 *.lnk
 *.log
 *.project
 /node_modules
-shoumedia/node_modules
-server/node_modules
-server/public/pic/*.webp
-shoumedia/dist
-*.vscode
+*.webp
+!.gitkeep
+/.vscode
 /v1.0/ser/shouTemp.txt
-# =========================
-# Operating System Files
-# =========================
-
-# OSX
-# =========================
-
-.DS_Store
-.AppleDouble
-.LSOverride
-
-# Thumbnails
-._*
-
-# Files that might appear on external disk
-.Spotlight-V100
-.Trashes
-
-# Directories potentially created on remote AFP share
-.AppleDB
-.AppleDesktop
-Network Trash Folder
-Temporary Items
-.apdisk
