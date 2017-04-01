@@ -1,8 +1,8 @@
 module.exports = function*(next) {
     try {
-        var username = this.params.username;
+        var {username} = this.params;
         var info = yield require("./../login/getInfo")(username);
-        var url = "http://202.121.64.37/yktapi/?m=yktapi.Querycust&stuempno=" + info.md5;
+        var url = `http://202.121.64.37/yktapi/?m=yktapi.Querycust&stuempno=${info.md5}`;
         var balance = yield require('../../lib/get').get(info.cookie, url);
         if (balance.expire) {
             this.body = {

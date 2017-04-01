@@ -1,7 +1,7 @@
 var cheerio=require("cheerio");
 module.exports =async function(ctx,next) {
     try {
-        var username = ctx.params.username;
+        var {username} = ctx.params;
         var info = await require("./login/getInfo")(username);
         var url = "http://urp.shou.edu.cn/bxqcjcxAction.do";
         var res=await require("./../lib/getUrpCore")(url,{username,password:info.urpPassword});

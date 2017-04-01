@@ -4,8 +4,8 @@ charset(request);
 
 module.exports =async function(ctx,next) {
     try {
-        var username = ctx.request.body.username;
-        var password = ctx.request.body.urppassword;
+        var {username,urppassword} = ctx.request.body;
+        var password=urppassword;
         var valid = await request.post("http://urp.shou.edu.cn/loginAction.do").charset('gbk').type('form').send({
             zjh: username,
             mm: password
@@ -21,7 +21,7 @@ module.exports =async function(ctx,next) {
             a.username = username;
             a.urpPassword = password;
             a.updateTime = new Date();
-            await ctx.db.User.update({ username: username }, { $set: a }, { upsert: true }).exec();
+            await ctx.db.User.update({ username }, { $set: a }, { upsert: true }).exec();
             ctx.body={
                 data:{
                     urpPass:true

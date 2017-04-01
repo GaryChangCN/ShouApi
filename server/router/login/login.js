@@ -1,8 +1,7 @@
 module.exports =async function(ctx,next) {
     try {
         var request = require("request");
-        var username = ctx.request.body.username;
-        var password = ctx.request.body.password;
+        var {username,password} = ctx.request.body;
         var a = await new Promise(function(resolve, reject) {
             request.post({
                 url: 'http://202.121.64.37/User/login',
@@ -14,9 +13,8 @@ module.exports =async function(ctx,next) {
                 if (err) {
                     reject(err);
                 } else {
-                    var d = JSON.parse(body.toLowerCase());
-                    var data = d.data
-                    if (d.code == 0) {
+                    var {data,code} = JSON.parse(body.toLowerCase());
+                    if (code == 0) {
                         var tmp = {
                             cookie: res.headers['set-cookie'][0],
                             username,
@@ -24,9 +22,9 @@ module.exports =async function(ctx,next) {
                             name: data.psnname,
                             college: data.psndept,
                         }
-                        resolve(tmp)
+                        resolve(tmp);
                     } else {
-                        resolve(false)
+                        resolve(false);
                     }
                 }
             });
@@ -34,13 +32,15 @@ module.exports =async function(ctx,next) {
         if(!!a){
             a.password=password;
             a.updateTime=new Date();
-            await ctx.db.User.update({username:username},{$set:a},{upsert:true}).exec();
+            await ctx.db.User.update({username},{$set:a},{upsert:true}).exec();
             ctx.body={
                 err:false
             }
         }else{
             ctx.body={
-                err:"用户名或者密码错误"
+                err:{
+                    message:"用户名或者密码错误"
+                }
             }
         }
     } catch (err) {

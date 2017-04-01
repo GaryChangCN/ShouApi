@@ -36,8 +36,7 @@ var get = function(username, urpPassword) {
 
 module.exports =async function(ctx,next) {
     try {
-        var username = ctx.params.username;
-        var type = ctx.params.type;
+        var {username,type} = ctx.params;
         if (type == "cache") {
             var data = await ctx.db.Curr.findOne({ username: username }).exec().then(function(value) {
                 if (value) {
