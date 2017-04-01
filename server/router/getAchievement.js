@@ -10,7 +10,7 @@ module.exports =async function(ctx,next) {
         if(childLen<=1){
             ctx.body={
                 err:false,
-                have:false
+                data:[]
             }
         }else{
             var list=[];
@@ -27,7 +27,9 @@ module.exports =async function(ctx,next) {
                     });
                 }
             })
-            ctx.body=list;
+            ctx.body={
+                data:list
+            };
         }
     } catch (error) {
         ctx.logger.error(error);

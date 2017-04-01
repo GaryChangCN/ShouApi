@@ -91,7 +91,7 @@
 //res
 {
     err:"",//false or 暂时没有出成绩
-    have:true/false  //有没有出成绩
+     //没有出成绩数组为空
     data:[
         {
             kch:"课程号",
