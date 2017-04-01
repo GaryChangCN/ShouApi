@@ -22,14 +22,17 @@ module.exports =async function(ctx,next) {
             a.urpPassword = password;
             a.updateTime = new Date();
             await ctx.db.User.update({ username: username }, { $set: a }, { upsert: true }).exec();
-            ctx.body = {
-                urpPass: true,
-                err: false
+            ctx.body={
+                data:{
+                    urpPass:true
+                }
             }
         } else {
             ctx.body = {
-                urpPass: false,
-                err: true
+                err:true,
+                data:{
+                    urpPass:false
+                }
             }
         }
     } catch (err) {

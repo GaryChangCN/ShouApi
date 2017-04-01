@@ -1,30 +1,23 @@
 ## 后台调用接口说明
 
-### 登录
+### urp登录
 
 ```
 {
-    url:"/api/login",
+    url:"/api/urplogin",
     method:"POST",
     data:{
         username:"",
-        password:"",
+        urppassword:"",
     },
-    dataType:"urlencoded",
-    origin:"ishou"
+    dataType:"urlencoded"
 }
 //res
 {
-    err:"", //为true时候为登录失败
     data:{
-        _id:"",
-        username:"",
-        password:"",
-        md5:"",
-        name:"",
-        college:"",
-        cookie:"",//ishou Cookie
-    }
+        urpPass:true/false,
+    },
+    err:""
 }
 
 ```
