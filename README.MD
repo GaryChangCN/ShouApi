@@ -19,6 +19,9 @@
 
 ## 更新日志
 
+
+### 2017-4-02
+今天做了个决定，这个版本的server端只给小程序使用
 ### 2017-03-29
 使用koa2替代koa1，全面步入async await时代,发布了一个npm包，
 [koa2-formidable](https://www.npmjs.com/package/koa2-formidable)用来解决之前用的koa-formidable没有
