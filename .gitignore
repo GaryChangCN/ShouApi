@@ -11,3 +11,7 @@ api.js
 !.gitkeep
 /.vscode
 /v1.0/ser/shouTemp.txt
+/server/lib/config.wx.js
+/server/log/log.log.1
+/server/log/log.log.2
+/server/log/log.log.3

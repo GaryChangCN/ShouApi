@@ -59,15 +59,21 @@ var infoPlusSchema = new Schema({
     email:{ type: String, default: "未知" },
     pic:{ type: String, default: "未知" }
 })
-
+var wxapp=new Schema({
+    username:String,
+    openid:String,
+    session_key:String
+})
 var User = mongoose.model('User', userSchema);
 var Curr = mongoose.model('Curriculum', currScema);
 var Address = mongoose.model('Address', addressSchema);
 var InfoPlus = mongoose.model('InfoPlus', infoPlusSchema);
+var Wxapp=mongoose.model('Wxapp',wxapp);
 
 module.exports = {
     User,
     Curr,
     Address,
-    InfoPlus
+    InfoPlus,
+    Wxapp
 };

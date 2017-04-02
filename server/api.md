@@ -12,6 +12,7 @@
     data:{
         username:"",
         urppassword:"",
+        thirdSession:""//当存在此字段时候会做小程序绑定验证
     },
     dataType:"urlencoded"
 }
@@ -19,6 +20,7 @@
 {
     data:{
         urpPass:true/false,
+        bindWxApp:true/false  //小程序openid绑定成功
     },
     err:""
 }
