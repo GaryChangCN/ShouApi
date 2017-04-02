@@ -1,7 +1,7 @@
 module.exports =async function(ctx,next) {
     if (ctx.method.toUpperCase() == "GET") {
         try {
-            var {keyword} = ctx.params;
+            var {keywords} = ctx.params;
             var reg = new RegExp(keywords);
             var a = await ctx.db.Address.find({ $or: [{ name: reg }, { mobile: reg }] }).exec();
             ctx.body = {
@@ -9,6 +9,7 @@ module.exports =async function(ctx,next) {
                 data: a
             }
         } catch (error) {
+            console.log(error);
             ctx.logger.error(error);
             await next();
         }
