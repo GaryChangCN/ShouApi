@@ -33,7 +33,10 @@ router.get('/getachievement/:username',cors,require('./router/getAchievement'),e
 router.get('/getcurriculum/:username/:type',cors,require('./router/getCurriculum'),err)
 router.get('/getinfoplus/:username/:type',cors,require('./router/getInfoPlus'),err);
 router.all('/address/:keywords',cors,require("./router/address/get"),require("./router/address/post"),require("./router/address/update"),err);
-router.post('/wxapp',cors,require("./router/wxapp/getOpenId"),err);
+
+router.get('/wxapp/fetchinfoplus',cors,require("./router/wxapp/fetchInfoPlus"),err);
+router.get('/wxapp/fetchbindurp',cors,require("./router/wxapp/fetchBindUrp"),err);
+router.post('/wxapp/getthirdsession',cors,require("./router/wxapp/getOpenId"),err);
 // router.get('/getbalance/:username',cors,require('./router/card/getBalance'),err);
 // router.get('/getcost/:username/:start/:end',cors,require('./router/card/getCost'),err);
 // router.get('/getnews',cors,require('./router/news/getNewsList'),err);

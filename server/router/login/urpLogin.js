@@ -22,11 +22,11 @@ module.exports =async function(ctx,next) {
             a.urpPassword = password;
             a.updateTime = new Date();
             await ctx.db.User.update({ username }, { $set: a }, { upsert: true }).exec();
-            var {cry}=require("../../lib/config.wx");
+            var {cry}=require("../wxapp/lib/config.wx");
             var _id=cry().decode(thirdSession);
-            var count=await ctx.db.Wxapp.count({_id});
+            var count=await ctx.db.Wxapp.count({_id}).exec();
             if(count){
-                await ctx.db.Wxapp.update({_id},{username});
+                await ctx.db.Wxapp.update({_id},{username}).exec();
                 ctx.body={
                     data:{
                         urpPass:true,

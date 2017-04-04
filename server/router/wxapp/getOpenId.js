@@ -1,4 +1,4 @@
-var {appid,secret,cry}=require("../../lib/config.wx");
+var {appid,secret,cry}=require("./lib/config.wx");
 var request=require("superagent");
 var qs=require("qs");
 

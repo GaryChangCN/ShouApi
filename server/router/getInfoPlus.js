@@ -45,11 +45,13 @@ var get = function(username, urpPassword) {
     });
 }
 
-module.exports =async function(ctx,next) {
+module.exports =async function(ctx,next,username,type) {
     try {
-        var username = ctx.params.username;
-        var type = ctx.params.type;
+        console.log(username,type);
+        var username =username|| ctx.params.username;
+        var type =type|| ctx.params.type;
         if (type == "cache") {
+            //先检测数据库钟是否有缓存，有的话直接返回，没有则重新发起请求
             var data = await ctx.db.InfoPlus.findOne({ username: username }).exec().then(function(value) {
                 if (value) {
                     return value;
@@ -63,6 +65,7 @@ module.exports =async function(ctx,next) {
                 }
             });
         } else if (type == "fresh") {
+            //返回新的数据，并且更新缓存数据库
             var info = await require("./login/getInfo")(username);
             var data = await get(info.username, info.urpPassword);
             ctx.db.InfoPlus.update({ username: username }, { $set: data }, { upsert: true }).exec();
