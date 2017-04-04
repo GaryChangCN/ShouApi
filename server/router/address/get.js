@@ -9,7 +9,6 @@ module.exports =async function(ctx,next) {
                 data: a
             }
         } catch (error) {
-            console.log(error);
             ctx.logger.error(error);
             await next();
         }

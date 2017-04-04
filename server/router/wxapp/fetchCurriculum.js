@@ -5,7 +5,7 @@ module.exports = async function(ctx, next) {
         var { thirdSession, type } = ctx.query;
         var username=await session2username(ctx,thirdSession);
         if (username) {
-            return require("../getInfoPlus")(ctx, next, username, type);
+            return require("../getCurriculum")(ctx, next, username, type);
         } else {
             ctx.body = {
                 err: {
@@ -14,6 +14,7 @@ module.exports = async function(ctx, next) {
             }
         }
     } catch (error) {
+        console.log(error);
         await next();
     }
 }

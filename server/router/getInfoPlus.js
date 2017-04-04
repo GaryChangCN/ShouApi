@@ -47,7 +47,6 @@ var get = function(username, urpPassword) {
 
 module.exports =async function(ctx,next,username,type) {
     try {
-        console.log(username,type);
         var username =username|| ctx.params.username;
         var type =type|| ctx.params.type;
         if (type == "cache") {

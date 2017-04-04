@@ -1,10 +1,9 @@
-var {cry} = require("./lib/config.wx");
+var session2username=require("./lib/session2username");
 
 module.exports = async function(ctx, next) {
     try {
         var { thirdSession } = ctx.query;
-        var _id = cry().decode(thirdSession);
-        var { username } = await ctx.db.Wxapp.findOne({ _id }).exec();
+        var username=await session2username(ctx,thirdSession);
         if (username) {
             ctx.body={
                 data:{

@@ -5,6 +5,7 @@ var qs=require("qs");
 module.exports=async function (ctx,next) {
     try {
         var {code}=ctx.request.body;
+        console.log(code);
         var js_code=code;
         var grant_type="authorization_code";
         var url="https://api.weixin.qq.com/sns/jscode2session";
@@ -26,12 +27,14 @@ module.exports=async function (ctx,next) {
                 openid,
                 "session_key":session_key
             };
+            // var count=await
             var saved=await ctx.db.Wxapp.update(
                 {openid},
                 data,
                 {upsert:true}
-            )
-            var {_id}=await ctx.db.Wxapp.findOne({openid},'_id');
+            ).exec();
+            var {_id}=await ctx.db.Wxapp.findOne({openid},'_id').exec();
+            console.log(_id);
             var thirdSession=cry().encode(_id.toString());
             ctx.body={
                 data:{

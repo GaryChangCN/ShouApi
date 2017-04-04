@@ -22,21 +22,24 @@ var get = function(username, urpPassword) {
         templist[0].splice(0, 1);
         templist[4].splice(0, 1);
         templist[8].splice(0, 1);
-        var arr = [];
-        for (let i = 0; i < 7; i++) {
-            var col = [];
-            for (let j = 0; j < 12; j++) {
-                col.push(templist[j][i])
-            }
-            arr.push(col);
-        }
-        return arr;
+        //矩阵转制
+        // var arr = [];
+        // for (let i = 0; i < 7; i++) {
+        //     var col = [];
+        //     for (let j = 0; j < 12; j++) {
+        //         col.push(templist[j][i])
+        //     }
+        //     arr.push(col);
+        // }
+        // return arr;
+        return templist;
     })
 }
 
-module.exports =async function(ctx,next) {
+module.exports =async function(ctx,next,username,type) {
     try {
-        var {username,type} = ctx.params;
+        var username = username||ctx.params.username;
+        var type=type||ctx.params.type;
         if (type == "cache") {
             var data = await ctx.db.Curr.findOne({ username: username }).exec().then(function(value) {
                 if (value) {
