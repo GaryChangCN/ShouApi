@@ -2,10 +2,10 @@ var charset = require("superagent-charset");
 var request = require("superagent");
 charset(request);
 
-module.exports =async function(ctx,next) {
+module.exports = async function(ctx, next, username, urppassword, _id) {
     try {
-        var {username,urppassword,thirdSession} = ctx.request.body;
-        var password=urppassword;
+        var username = username || ctx.request.body.username;
+        var password = urppassword || ctx.request.body.urppassword;
         var valid = await request.post("http://urp.shou.edu.cn/loginAction.do").charset('gbk').type('form').send({
             zjh: username,
             mm: password
@@ -22,26 +22,32 @@ module.exports =async function(ctx,next) {
             a.urpPassword = password;
             a.updateTime = new Date();
             await ctx.db.User.update({ username }, { $set: a }, { upsert: true }).exec();
-            var {cry}=require("../wxapp/lib/config.wx");
-            var _id=cry().decode(thirdSession);
-            var count=await ctx.db.Wxapp.count({_id}).exec();
-            if(count){
-                await ctx.db.Wxapp.update({_id},{username}).exec();
-                ctx.body={
-                    data:{
-                        urpPass:true,
-                        bindWxApp:true,
-                        userInfo:{
-                            username
+            if (thirdSession) {
+                var count = await ctx.db.Wxapp.count({ _id }).exec();
+                if (count) {
+                    await ctx.db.Wxapp.update({ _id }, { username }).exec();
+                    ctx.body = {
+                        data: {
+                            urpPass: true,
+                            bindWxApp: true,
+                            userInfo: {
+                                username
+                            }
                         }
+                    }
+                }
+            } else {
+                ctx.body = {
+                    data: {
+                        urpPass: true
                     }
                 }
             }
         } else {
             ctx.body = {
-                err:true,
-                data:{
-                    urpPass:false
+                err: true,
+                data: {
+                    urpPass: false
                 }
             }
         }
