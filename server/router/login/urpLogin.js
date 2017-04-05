@@ -22,7 +22,7 @@ module.exports = async function(ctx, next, username, urppassword, _id) {
             a.urpPassword = password;
             a.updateTime = new Date();
             await ctx.db.User.update({ username }, { $set: a }, { upsert: true }).exec();
-            if (thirdSession) {
+            if (_id) {
                 var count = await ctx.db.Wxapp.count({ _id }).exec();
                 if (count) {
                     await ctx.db.Wxapp.update({ _id }, { username }).exec();
