@@ -37,6 +37,7 @@ router.all('/address/:keywords',cors,require("./router/address/get"),require("./
 router.get('/wxapp/fetchinfoplus',cors,require("./router/wxapp/fetchInfoPlus"),err);
 router.get('/wxapp/fetchcurriculum',cors,require("./router/wxapp/fetchCurriculum"),err);
 router.get('/wxapp/fetchbindurp',cors,require("./router/wxapp/fetchBindUrp"),err);
+router.get('/wxapp/fetchachievement',cors,require("./router/wxapp/fetchAchievement"),err);
 router.post('/wxapp/fetchthirdsession',cors,require("./router/wxapp/fetchThirdSession"),err);
 // router.get('/getbalance/:username',cors,require('./router/card/getBalance'),err);
 // router.get('/getcost/:username/:start/:end',cors,require('./router/card/getCost'),err);
