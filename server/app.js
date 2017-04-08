@@ -27,14 +27,15 @@ app.context.logger = logger;
 
 var cors = require('./router/cors');
 var err = require("./router/err");
-router.post('/login', cors, require('./router/login/login'), err);
-router.post('/urplogin', cors, require('./router/login/urpLogin'), err);
-router.get('/getachievement/:username', cors, require('./router/getAchievement'), err);
-router.get('/getcurriculum/:username/:type', cors, require('./router/getCurriculum'), err)
-router.get('/getinfoplus/:username/:type', cors, require('./router/getInfoPlus'), err);
+// router.post('/login', cors, require('./router/login/login'), err);
+// router.post('/urplogin', cors, require('./router/login/urpLogin'), err);
+// router.get('/getachievement/:username', cors, require('./router/getAchievement'), err);
+// router.get('/getcurriculum/:username/:type', cors, require('./router/getCurriculum'), err)
+// router.get('/getinfoplus/:username/:type', cors, require('./router/getInfoPlus'), err);
 router.all('/address/:keywords', cors, require("./router/address/get"), require("./router/address/post"), require("./router/address/update"), err);
 
 router.get('/getnewslist',require("./router/news/getNewsList"),err);
+router.get('/getnewsdetail',require("./router/news/getNewsDetail"),err);
 
 
 router.post('/wxapp/urplogin', require("./router/wxapp/urpLogin"), err);

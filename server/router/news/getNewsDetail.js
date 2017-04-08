@@ -13,8 +13,12 @@ module.exports = async function fetchNewsList(ctx, next) {
             $(".wp_articlecontent p").each(function(i) {
                 if ($(this).children("img").length > 0) {
                     $(this).children("img").each(function(j) {
+                        var src=$(this).attr("src");
+                        if(src.indexOf("http")!=0){
+                            src=pathname+src;
+                        }
                         list.push({
-                            img: pathname + $(this).attr("src")
+                            img: src
                         });
                     });
                 } else {
@@ -25,7 +29,9 @@ module.exports = async function fetchNewsList(ctx, next) {
             });
             ctx.body = {
                 data: {
-                    list
+                    list,
+                    title:$(".arti_title").text(),
+                    meta:$(".arti_metas").text().replace("设置","")
                 }
             }
         }else{

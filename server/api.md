@@ -209,13 +209,13 @@
 
 ```
 {
-    url:"api/getnewslist,
+    url:"api/getnewslist",
     method:"get",
     query:{
         pn:1,//默认为1
         type:"yw" //默认为yw要闻，mtjj媒体聚焦，xsjz学术讲座，xsqy学术前沿，tzgg通知公告
     },
-    origin:"urp"
+    origin:"offical site"
 }
 //res
 {
@@ -231,3 +231,24 @@
     }
 }
 
+### 获取新闻详情
+
+```
+{
+    url:"api/getnewsdetail",
+    method:"get",
+    query:{
+        url:"为新闻列表项的  href "
+    },
+    origin:"offical site"
+}
+//res
+{
+    err:{},
+    data:{
+        list:[], //文章数组
+        title:"文章名",
+        meta:"文章信息"
+    }
+}
+```
