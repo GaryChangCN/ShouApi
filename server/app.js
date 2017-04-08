@@ -32,8 +32,9 @@ var err = require("./router/err");
 // router.get('/getachievement/:username', cors, require('./router/getAchievement'), err);
 // router.get('/getcurriculum/:username/:type', cors, require('./router/getCurriculum'), err)
 // router.get('/getinfoplus/:username/:type', cors, require('./router/getInfoPlus'), err);
-router.all('/address/:keywords', cors, require("./router/address/get"), require("./router/address/post"), require("./router/address/update"), err);
+// router.all('/address/:keywords', cors, require("./router/address/get"), require("./router/address/post"), require("./router/address/update"), err);
 
+router.get('/address/:keywords', cors, require("./router/address/get"), err);
 router.get('/getnewslist',require("./router/news/getNewsList"),err);
 router.get('/getnewsdetail',require("./router/news/getNewsDetail"),err);
 
@@ -44,6 +45,8 @@ router.get('/wxapp/fetchcurriculum', require("./router/wxapp/fetchCurriculum"), 
 router.get('/wxapp/fetchbindurp', require("./router/wxapp/fetchBindUrp"), err);
 router.get('/wxapp/fetchachievement', require("./router/wxapp/fetchAchievement"), err);
 router.post('/wxapp/fetchthirdsession', require("./router/wxapp/fetchThirdSession"), err);
+router.get('/wxapp/fetchwx',require("./router/wxapp/fetchWx"),err);
+router.put('/wxapp/updatewx',require("./router/wxapp/updateWx"),err);
 
 app.use(router.routes());
 app.use(router.allowedMethods());

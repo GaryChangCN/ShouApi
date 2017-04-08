@@ -62,7 +62,8 @@ var infoPlusSchema = new Schema({
 var wxapp=new Schema({
     username:String,
     openid:String,
-    session_key:String
+    session_key:String,
+    avatar:String
 })
 var User = mongoose.model('User', userSchema);
 var Curr = mongoose.model('Curriculum', currScema);
