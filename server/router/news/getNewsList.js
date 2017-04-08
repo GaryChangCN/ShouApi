@@ -1,13 +1,28 @@
-module.exports=function*(next){
+var request = require("superagent");
+var cheerio=require("cheerio");
+
+module.exports=async function fetchNewsList(ctx,next){
     try {
-        var url = 'http://202.121.64.37/News/?m=news.getChannel';
-        var newsList =yield require("./../../lib/get").get('cookie', url);
-        this.body = {
-            err:false,
-            data:newsList.data||[]
+        var pn=ctx.query.pn||1;
+        var type=ctx.query.type||"yw";
+        var hostname="http://www.shou.edu.cn";
+        var res=await request.get(`${hostname}/${type}/list${pn}.htm`)
+        var text=res.text.toString();
+        var $=cheerio.load(text,{normalizeWhitespace:true})
+        var list=[]
+        var a=$("#wp_news_w8 .col_news_item").each(function(){
+            var tmp={};
+            tmp.href=$(this).attr("href");
+            tmp.title=$(this).children(".col_news_title").text();
+            tmp.time=$(this).children(".col_news_date").text();
+            list.push(tmp);
+        });
+        ctx.body={
+            data:{
+                list
+            }
         }
     } catch (error) {
-        this.logger.error(error);
-        yield next;
+        await next();
     }
 }

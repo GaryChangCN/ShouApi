@@ -3,6 +3,10 @@
 约定返回数据格式同意为json格式，有data和err两个字段，如果没有错误，err可不填写，如果有错，err可以为布尔值
 或者为一个对象，这个对象message字段有错误信息
 
+## 通用接口
+
+接口分为通用接口和小程序接口，以下是通用接口
+
 ### urp登录
 
 ```
@@ -200,3 +204,30 @@
 //在获取infoPlus过程中会获取校园卡照片，保存成"学号".jpg格式在public/pic下
 //若图片已存在，则不会重新获取图片
 ```
+
+### 获取新闻列表
+
+```
+{
+    url:"api/getnewslist,
+    method:"get",
+    query:{
+        pn:1,//默认为1
+        type:"yw" //默认为yw要闻，mtjj媒体聚焦，xsjz学术讲座，xsqy学术前沿，tzgg通知公告
+    },
+    origin:"urp"
+}
+//res
+{
+    err:{},
+    data:{
+        list:[
+            {
+                time:"",
+                title:"",
+                href:""
+            }
+        ]
+    }
+}
+
