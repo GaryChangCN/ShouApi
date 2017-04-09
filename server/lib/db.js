@@ -65,16 +65,26 @@ var wxapp=new Schema({
     session_key:String,
     avatar:String
 })
+
+var feedbackSchema=new Schema({
+    content:String,
+    email:String,
+    username:String
+});
+
+
 var User = mongoose.model('User', userSchema);
 var Curr = mongoose.model('Curriculum', currScema);
 var Address = mongoose.model('Address', addressSchema);
 var InfoPlus = mongoose.model('InfoPlus', infoPlusSchema);
 var Wxapp=mongoose.model('Wxapp',wxapp);
+var Feedback=mongoose.model('Feedback',feedbackSchema);
 
 module.exports = {
     User,
     Curr,
     Address,
     InfoPlus,
-    Wxapp
+    Wxapp,
+    Feedback
 };

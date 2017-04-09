@@ -34,10 +34,10 @@ var err = require("./router/err");
 // router.get('/getinfoplus/:username/:type', cors, require('./router/getInfoPlus'), err);
 // router.all('/address/:keywords', cors, require("./router/address/get"), require("./router/address/post"), require("./router/address/update"), err);
 
-router.get('/address/:keywords', cors, require("./router/address/get"), err);
+router.post('/address', cors, require("./router/address/get"), err);
 router.get('/getnewslist',require("./router/news/getNewsList"),err);
 router.get('/getnewsdetail',require("./router/news/getNewsDetail"),err);
-
+router.post('/feedback',require("./router/feedback"),err);
 
 router.post('/wxapp/urplogin', require("./router/wxapp/urpLogin"), err);
 router.get('/wxapp/fetchinfoplus', require("./router/wxapp/fetchInfoPlus"), err);

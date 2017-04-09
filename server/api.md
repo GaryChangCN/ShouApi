@@ -131,7 +131,7 @@
 
 ```
 {
-    url:"api/address/:[keywords]",
+    url:"api/address",
     method:"GET/POST/UPDATE",
     origin:"app"
     //当为get时候需要keywords参数，可根据姓名，手机号查询
@@ -142,7 +142,10 @@
     {
         _id:"",
         change:""//为一变更对象
-        type:"urlencoded"
+        type:"urlencoded",
+        data:{
+            keywords:""
+        }
     }
     //为post 时候 有管理员权限认证
     {
@@ -249,6 +252,27 @@
         list:[], //文章数组
         title:"文章名",
         meta:"文章信息"
+    }
+}
+```
+
+### 发送反馈信息
+
+```
+{
+    url:"api/feedback",
+    method:"post",
+    data:{
+        content:"",
+        email:"",
+        username:"可选"
+    }
+}
+//res
+{
+    err:"",
+    data:{
+        feedback:true
     }
 }
 ```
