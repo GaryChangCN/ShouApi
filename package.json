@@ -5,13 +5,10 @@
     "author": "GaryChangCN <garychangcn@hotmail.com>",
     "main": "app.js",
     "scripts": {
-        "dev-server": "supervisor ./server/app.js",
-        "dev-fe": "node shoumedia/build/dev-server.js",
-        "build-fe": "node shoumedia/build/build.js"
+        "dev": "node app.js"
     },
-    "license": "ISC",
+    "license": "MIT",
     "dependencies": {
-        "axios": "^0.15.3",
         "cheerio": "^0.22.0",
         "formidable": "^1.0.17",
         "iconv-lite": "^0.4.15",
@@ -21,11 +18,7 @@
         "log4js": "^0.6.38",
         "mongoose": "^4.6.4",
         "superagent": "^3.4.3",
-        "superagent-charset": "^1.1.1",
-        "vue": "^2.0.1",
-        "vue-axios": "^1.2.2",
-        "vue-router": "^2.0.1",
-        "vuex": "^2.0.0"
+        "superagent-charset": "^1.1.1"
     },
     "devDependencies": {
         "autoprefixer": "^6.4.0",
