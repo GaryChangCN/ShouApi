@@ -1,7 +1,5 @@
-/v1.0/ser/conn.php
-/v1.0/ser/xszcconn.php
-/server/log/
-/server/public/pic/
+/log/
+/public/pic/
 api.js
 *.lnk
 *.log
@@ -11,7 +9,8 @@ api.js
 !.gitkeep
 /.vscode
 /v1.0/ser/shouTemp.txt
-/server/lib/config.wx.js
-/server/log/log.log.1
-/server/log/log.log.2
-/server/log/log.log.3
+/lib/config.wx.js
+/log/log.log.1
+/log/log.log.2
+/log/log.log.3
+/router/wxapp/lib/config.wx.js
