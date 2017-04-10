@@ -5,7 +5,7 @@
     "author": "GaryChangCN <garychangcn@hotmail.com>",
     "main": "app.js",
     "scripts": {
-        "dev": "node app.js"
+        "dev": "supervisor app.js"
     },
     "license": "MIT",
     "dependencies": {

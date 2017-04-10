@@ -2,11 +2,10 @@ module.exports =async function(ctx,next) {
     try {
         var {keywords} = ctx.request.body;
         var reg = new RegExp(keywords);
-        var a = await ctx.db.Address.find({ $or: [{ name: reg }, { mobile: reg }] }).exec();
-        console.log(a);
+        var data = await ctx.db.Address.find({ $or: [{ name: reg }, { mobile: reg }] }).exec();
         ctx.body = {
             err: false,
-            data: a
+            data
         }
     } catch (error) {
         ctx.logger.error(error);
