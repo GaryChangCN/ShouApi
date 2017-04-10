@@ -13,40 +13,25 @@ app.use(formidable({
     maxFieldsSize: 3145728,
     multiples: true
 }));
-
-router.prefix('/api');
-
 app.on('error', function(err, ctx) {
     logger.error(err.message);
     logger.error(err);
 });
-
 app.context.db = db;
 app.context.logger = logger;
-
-
 var cors = require('./router/cors');
 var err = require("./router/err");
-// router.post('/login', cors, require('./router/login/login'), err);
-// router.post('/urplogin', cors, require('./router/login/urpLogin'), err);
-// router.get('/getachievement/:username', cors, require('./router/getAchievement'), err);
-// router.get('/getcurriculum/:username/:type', cors, require('./router/getCurriculum'), err)
-// router.get('/getinfoplus/:username/:type', cors, require('./router/getInfoPlus'), err);
-// router.all('/address/:keywords', cors, require("./router/address/get"), require("./router/address/post"), require("./router/address/update"), err);
 
-router.post('/address', cors, require("./router/address/get"), err);
-router.get('/getnewslist',require("./router/news/getNewsList"),err);
-router.get('/getnewsdetail',require("./router/news/getNewsDetail"),err);
-router.post('/feedback',require("./router/feedback"),err);
+router.prefix('/api');
+router.post('/login',require("./router/login"),err);
+router.post('/address',require("./router/address"),err);
+router.get('/newslist',require("./router/news/list"),err);
+router.get('/newsDetail',require("./router/news/detail"),err);
 
-router.post('/wxapp/urplogin', require("./router/wxapp/urpLogin"), err);
-router.get('/wxapp/fetchinfoplus', require("./router/wxapp/fetchInfoPlus"), err);
-router.get('/wxapp/fetchcurriculum', require("./router/wxapp/fetchCurriculum"), err);
-router.get('/wxapp/fetchbindurp', require("./router/wxapp/fetchBindUrp"), err);
-router.get('/wxapp/fetchachievement', require("./router/wxapp/fetchAchievement"), err);
-router.post('/wxapp/fetchthirdsession', require("./router/wxapp/fetchThirdSession"), err);
-router.get('/wxapp/fetchwx',require("./router/wxapp/fetchWx"),err);
-router.put('/wxapp/updatewx',require("./router/wxapp/updateWx"),err);
+//传统urp
+
+router.post('/curri',require("./router/urpData/curri"),err);
+
 
 app.use(router.routes());
 app.use(router.allowedMethods());
