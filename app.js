@@ -29,8 +29,10 @@ router.get('/newslist',require("./router/news/list"),err);
 router.get('/newsDetail',require("./router/news/detail"),err);
 
 //传统urp
-
 router.post('/curri',require("./router/urpData/curri"),err);
+router.post('/infoPlus',require("./router/urpData/infoPlus"),err);
+router.post('/newAchi',require("./router/urpData/newAchi"),err);
+router.post('/oldAchi',require("./router/urpData/oldAchi"),err);
 
 
 app.use(router.routes());

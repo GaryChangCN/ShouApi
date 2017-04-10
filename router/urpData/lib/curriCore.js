@@ -41,7 +41,7 @@ async function fetchFresh(ctx, username, urppassword) {
             data: {
                 classData: ret,
                 pass,
-                cache: "fresh"
+                type: "fresh"
             }
         }
     } else {
