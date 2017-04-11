@@ -2,15 +2,13 @@
 
 ## 地址 
 
-[测试版](http://www.shouedu.cn) 暂时停止
-
 ## 更新
 
 本项目正在重写，新技能栈 `vue`全家桶+`node.js`+`koajs`+`mongodb` 使用`cordova`或者`weex`实现移动端app，可能会使用`electron`。
+**目前正在开发小程序版本**
 
 ## 功能
-
-海大新型URP查询暨校园生活网页
+上海海洋大学新型URP查询暨校园生活网页
 
 [API文档](./api.md);
 
