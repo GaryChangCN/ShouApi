@@ -561,3 +561,23 @@
     }
 }
 ```
+
+## 获取消息通知详情
+
+```
+{
+    url:"/api/wxapp/msgDetail",
+    method:"get",
+    query:{
+        msgId
+    }
+}
+//res
+{
+    err,
+    data:{
+        title,
+        content
+    }
+}
+```

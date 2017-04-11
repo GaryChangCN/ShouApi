@@ -46,10 +46,15 @@ router.get('/wxapp/curri',require('./router/wxapp/urpData/curri'),err);
 router.get('/wxapp/infoPlus',require('./router/wxapp/urpData/infoPlus'),err);
 router.get('/wxapp/examDate',require('./router/wxapp/urpData/examDate'),err);
 
-router.post('/wxapp/feedBack',require('./router/wxapp/wx/feedback'),err);
 var getAvatar=require('./router/wxapp/wx/avatar/get');
 var updateAvatar=require('./router/wxapp/wx/avatar/update');
+var getMsg=require('./router/wxapp/wx/msg/get');
+var updateMsg=require('./router/wxapp/wx/msg/update');
+
+router.post('/wxapp/feedBack',require('./router/wxapp/wx/feedback'),err);
 router.all('/wxapp/avatar',getAvatar,updateAvatar,err);
+router.all('/wxapp/msg',getMsg,updateMsg,err);
+router.get('/wxapp/msgDetail',require('./router/wxapp/wx/msg/detail'),err);
 
 app.use(router.routes());
 app.use(router.allowedMethods());
