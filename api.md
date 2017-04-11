@@ -1,110 +1,95 @@
 ## 后台调用接口说明
 
 约定返回数据格式同意为json格式，有data和err两个字段，如果没有错误，err可不填写，如果有错，err可以为布尔值
-或者为一个对象，这个对象message字段有错误信息
+或者为一个对象，这个对象message字段有错误信息，data字段里面的ret属性一般是携带详细数据信息,如果不需要urp
+验证的接口一般不含有ret字段，数据直接在data字段。
 
 ## 通用接口
 
-接口分为通用接口和小程序接口，以下是通用接口
-
-### urp登录
+### 登录
 
 ```
 {
-    url:"/api/urplogin",
+    url:"/api/login",
     method:"POST",
     data:{
-        username:"",
-        urppassword:"",
-        thirdSession:""//当存在此字段时候会做小程序绑定验证
-    },
-    dataType:"urlencoded"
+        username,
+        urppassword
+    }
 }
 //res
 {
     data:{
-        urpPass:true/false,
-        bindWxApp:true/false  //小程序openid绑定成功
-    },
-    err:""
+        pass:true/false
+        username   
+    }
 }
-
 ```
 
-### 获取余额
+### 获取最新成绩
 
-//可能返回数据时间会稍长，因为爬取cookie过期，重新模拟登录
 ```
 {
-    url:"/api/getbalance/:username",
-    method:"GET",
-    origin:"ishou"
-} 
-
-//res
-
-{
+    url:"/api/newAchi",
+    method:"POST",
     data:{
-        stuempno:"学号",
-        custname:"姓名",
-        custtype:"本科生/",
-        deptname:"学院",
-        cardno:"卡号",
-        balance:"余额"
+        username,
+        urppassword
     },
-    err:false
-}
-```
-### 获取消费
-
-//可能返回数据时间会稍长，因为爬取cookie过期，重新模拟登录
-```
-{
-    url:"api/getCost/:username/:start/:end,
-    method:"GET",
-    origin:"ishou"
-    //这里start、end格式如20160615
-}
-//res
-{
-    err:false,
-    data[
-        {
-            amount:"消费金额",
-            aftbala:"消费后余额"
-            befbala:"消费前金额",
-            position:"消费地点",
-            type:"pos机"
-            transtime:"Date"
-        }
-    ]
-}
-```
-
-
-### 获取成绩
-
-```
-{
-    url:"/api/getachievement/:username",
-    method:"GET",
     origin:"urp"
 }
 //res
 {
     err:"",//false or 暂时没有出成绩
      //没有出成绩数组为空
-    data:[
-        {
-            kch:"课程号",
-            kxh:"课序号",
-            kcm:"课程名",
-            kcywm:"课程英文名",
-            xf:"学分",
-            kcsx:"课程属性",
-            cj:"成绩"
-        }
-    ]
+    data:{
+        ret:[
+            {
+                kch:"课程号",
+                kxh:"课序号",
+                kcm:"课程名",
+                kcywm:"课程英文名",
+                xf:"学分",
+                kcsx:"课程属性",
+                cj:"成绩"
+            }
+        ],
+        pass:true/false
+    }
+}
+```
+
+### 获取以前成绩
+
+```
+{
+    url:"/api/newAchi",
+    method:"POST",
+    data:{
+        username,
+        urppassword,
+        type:"cache/fresh"
+    },
+    origin:"urp"
+}
+//res
+
+{
+    data:{
+        pass:true/false, //账号密码是否正确
+        type:"cache/fresh",
+        ret:[
+            {
+                title:"第几学期",
+                content:[
+                    [
+                        "课程号","课序号","课程名","英文名","学分","课程性质","成绩"
+                    ]
+                ]
+            }
+        ]
+    },
+    err:true/false
 }
 ```
 
@@ -112,18 +97,25 @@
 
 ```
 {
-    url:"api/getclass/:username/:type,
-    method:"GET",
+    url:"api/curri,
+    method:"POST",
     origin:"urp",
-    type:{
-        cache:"从缓存中获取若没有则更新缓存并返回",
-        refresh:"重新抓取"
+    data:{
+        username,
+        urppassword,
+        type
     }
 }
 //res
 {
     err:true/false,
-    data:[]//课程表数组
+    data:{
+        ret:[
+            []  //课表二维数组
+        ],
+        pass,
+        type
+    }
 }
 ```
 
@@ -133,29 +125,11 @@
 {
     url:"api/address",
     method:"GET/POST/UPDATE",
+    data:{
+        keywords
+    }
     origin:"app"
     //当为get时候需要keywords参数，可根据姓名，手机号查询
-}
-//req
-{
-    //method 为 update时候 有管理员权限认证
-    {
-        _id:"",
-        change:""//为一变更对象
-        type:"urlencoded",
-        data:{
-            keywords:""
-        }
-    }
-    //为post 时候 有管理员权限认证
-    {
-        type:"urlencoded",
-        name:"",
-        email:"",
-        number:"",
-        mobile:"",
-        position:""
-    }
 }
 //res
 {
@@ -177,42 +151,71 @@
 
 ```
 {
-    url:"api/getinfoplus/:username/:type,
-    method:"GET",
+    url:"api/infoPlus,
+    method:"POST",
     origin:"urp",
-    type:{
-        cache:"从缓存中获取",
-        refresh:"重新抓取"
+    data:{
+        username,
+        urppassword,
+        type:"cache/fresh"
     }
 }
 //res
 {
     err:true/false,
     data:{
-        name,
-        idCard,
-        national,
-        highSchoolName,
-        highSchoolExam,
-        address,
-        parents,
-        college,
-        major,
-        className,
-        room,
-        political,
-        pic//图片名称
+        ret:{
+            name,
+            idCard,
+            national,
+            highSchoolName,
+            highSchoolExam,
+            address,
+            parents,
+            college,
+            major,
+            className,
+            room,
+            political,
+            pic//图片名称
+        },
+        pass:,
+        type
     }
 }
 //在获取infoPlus过程中会获取校园卡照片，保存成"学号".jpg格式在public/pic下
 //若图片已存在，则不会重新获取图片
 ```
 
+### 获取考试安排
+
+```
+{
+    url:"/api/examDate",
+    method:"POST",
+    date:{
+        username,
+        urppassword
+    }
+}
+//res
+
+{
+    err:,
+    data:{
+        ret:[
+            ["考试名","小区","教学楼","教室","课程","考试周次","考试星期","时间","座位号","准考证号"]
+        ],
+        pass:,
+    }
+}
+```
+
 ### 获取新闻列表
 
 ```
 {
-    url:"api/getnewslist",
+    url:"api/newsList",
     method:"get",
     query:{
         pn:1,//默认为1
@@ -233,12 +236,13 @@
         ]
     }
 }
+```
 
 ### 获取新闻详情
 
 ```
 {
-    url:"api/getnewsdetail",
+    url:"api/newsDetail",
     method:"get",
     query:{
         url:"为新闻列表项的  href "
@@ -255,6 +259,8 @@
     }
 }
 ```
+
+## 小程序接口
 
 ### 发送反馈信息
 

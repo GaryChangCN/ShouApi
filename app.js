@@ -33,6 +33,7 @@ router.post('/curri',require("./router/urpData/curri"),err);
 router.post('/infoPlus',require("./router/urpData/infoPlus"),err);
 router.post('/newAchi',require("./router/urpData/newAchi"),err);
 router.post('/oldAchi',require("./router/urpData/oldAchi"),err);
+router.post('/examDate',require("./router/urpData/examDate"),err);
 
 
 app.use(router.routes());
