@@ -97,7 +97,7 @@
 
 ```
 {
-    url:"api/curri,
+    url:"/api/curri,
     method:"POST",
     origin:"urp",
     data:{
@@ -123,7 +123,7 @@
 
 ```
 {
-    url:"api/address",
+    url:"/api/address",
     method:"GET/POST/UPDATE",
     data:{
         keywords
@@ -151,7 +151,7 @@
 
 ```
 {
-    url:"api/infoPlus,
+    url:"/api/infoPlus,
     method:"POST",
     origin:"urp",
     data:{
@@ -357,7 +357,7 @@
 
 ```
 {
-    url:"/api/oldAchi",
+    url:"/api/wxapp/oldAchi",
     method:"GET",
     query:{
         thirdSession,
@@ -383,12 +383,97 @@
     err:true/false
 }
 ```
+### 获取课程表
+
+```
+{
+    url:"/api/wxapp/curri,
+    method:"GET",
+    origin:"urp",
+    query:{
+        thirdSession
+        type
+    }
+}
+//res
+{
+    err:true/false,
+    data:{
+        ret:[
+            []  //课表二维数组
+        ],
+        pass,
+        type
+    }
+}
+```
+
+### 获取详细信息
+
+```
+{
+    url:"/api/wxapp/infoPlus,
+    method:"GET",
+    query:{
+        thirdSession
+        type:"cache/fresh"
+    }
+}
+//res
+{
+    err:true/false,
+    data:{
+        ret:{
+            name,
+            idCard,
+            national,
+            highSchoolName,
+            highSchoolExam,
+            address,
+            parents,
+            college,
+            major,
+            className,
+            room,
+            political,
+            pic//图片名称
+        },
+        pass:,
+        type
+    }
+}
+//在获取infoPlus过程中会获取校园卡照片，保存成"学号".jpg格式在public/pic下
+//若图片已存在，则不会重新获取图片
+```
+
+### 获取考试安排
+
+```
+{
+    url:"/api/wxapp/examDate",
+    method:"GET",
+    query:{
+        thirdSession
+    }
+}
+//res
+
+{
+    err:,
+    data:{
+        ret:[
+            ["考试名","小区","教学楼","教室","课程","考试周次","考试星期","时间","座位号","准考证号"]
+        ],
+        pass:,
+    }
+}
+```
 
 ### 发送反馈信息
 
 ```
 {
-    url:"api/feedback",
+    url:"/api/wxapp/feedback",
     method:"post",
     data:{
         content:"",
@@ -401,6 +486,46 @@
     err:"",
     data:{
         feedback:true
+    }
+}
+```
+
+### 获取小程序设置信息
+
+```
+{
+    url:"/api/wxapp/setting",
+    method:"get",
+    query:{
+        thirdSession,
+        setting:"avatar/msg"
+    }
+}
+//res
+{
+    err:"",
+    data:{
+        feedback:true
+    }
+}
+```
+
+### 更新自定义头像
+
+```
+{
+    url:"/api/wxapp/updateAvatar",
+    method:"put",
+    data:{
+        thirdSession,
+        avatar
+    }
+}
+//res
+{
+    err:"",
+    data:{
+        avatar:true
     }
 }
 ```

@@ -1,19 +1,20 @@
-var {cry}=require("./lib/config.wx");
+var {cry}=require("../lib/util");
 
 module.exports = async function(ctx, next) {
     try {
-        var { thirdSession, type } = ctx.query;
+        var { thirdSession, setting } = ctx.query;
         var _id = cry().decode(thirdSession);
         var res = await ctx.db.Wxapp.findOne({ _id },`username ${type}`).exec();
         var { username }=res;
         if (username) {
             ctx.body={
-                data:res
+                data:res,
+                pass:true
             }
         } else {
             ctx.body = {
-                err: {
-                    message: "没有绑定urp"
+                data:{
+                    pass:false
                 }
             }
         }

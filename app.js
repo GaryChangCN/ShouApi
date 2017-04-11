@@ -37,10 +37,17 @@ router.post('/examDate',require("./router/urpData/examDate"),err);
 
 //小程序用的
 router.post('/wxapp/thirdSession',require('./router/wxapp/thirdSession'),err);
-router.post('/wxapp/checkBindUrp',require('./router/wxapp/checkBindUrp'),err);
+router.get('/wxapp/checkBindUrp',require('./router/wxapp/checkBindUrp'),err);
 router.post('/wxapp/bindUrp',require('./router/wxapp/bindUrp'),err);
-router.post('/wxapp/oldAchi',require('./router/wxapp/oldAchi'),err);
-router.post('/wxapp/newAchi',require('./router/wxapp/newAchi'),err);
+router.get('/wxapp/oldAchi',require('./router/wxapp/oldAchi'),err);
+router.get('/wxapp/newAchi',require('./router/wxapp/newAchi'),err);
+router.get('/wxapp/curri',require('./router/wxapp/curri'),err);
+router.get('/wxapp/infoPlus',require('./router/wxapp/infoPlus'),err);
+router.get('/wxapp/examDate',require('./router/wxapp/examDate'),err);
+
+router.post('/wxapp/feedBack',require('./router/wxapp/wx/feedback'),err);
+router.get('/wxapp/setting',require('./router/wxapp/wx/fetchSetting'),err);
+router.put('/wxapp/updateAvatar',require('./router/wxapp/wx/updateAvatar'),err);
 
 app.use(router.routes());
 app.use(router.allowedMethods());
