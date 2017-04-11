@@ -299,7 +299,7 @@
     }
 }
 ```
-## 绑定urp
+### 绑定urp
 
 ```
 {
@@ -320,8 +320,25 @@
 }
 ```
 
-### 获取最新成绩
+### 解绑urp
 
+```
+{
+    url:"/api/wxapp/unBindUrp",
+    method:"DELETE",
+    data:{
+        thirdSession
+    }
+}
+//res
+{
+    err,
+    data:{
+        pass:false/true  //这里依然返回passfalse，此时代表解绑成功
+    }
+}
+
+```
 
 ### 获取最新成绩
 
@@ -490,32 +507,16 @@
 }
 ```
 
-### 获取小程序设置信息
+
+### 自定义头像方法
 
 ```
 {
-    url:"/api/wxapp/setting",
-    method:"get",
+    url:"/api/wxapp/avatar",
+    method:"put/get", //为get时候没有请求体，有query值为下，put时有body，没query
     query:{
-        thirdSession,
-        setting:"avatar/msg"
-    }
-}
-//res
-{
-    err:"",
-    data:{
-        feedback:true
-    }
-}
-```
-
-### 更新自定义头像
-
-```
-{
-    url:"/api/wxapp/updateAvatar",
-    method:"put",
+        thirdSession
+    },
     data:{
         thirdSession,
         avatar

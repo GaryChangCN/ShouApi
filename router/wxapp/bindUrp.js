@@ -7,7 +7,7 @@ module.exports = async function(ctx, next) {
         var _id = cry().decode(thirdSession);
         var { data } = await validUrpLogin(username, urppassword);
         if (data.pass) {
-            ctx.db.Wxapp.update({ _id }, { username }, { upsert: true }).exec();
+            ctx.db.Wxapp.update({ _id }, { $set: { username } }, { upsert: true }).exec();
             ctx.body = {
                 data: {
                     pass: true
