@@ -513,7 +513,7 @@
 ```
 {
     url:"/api/wxapp/avatar",
-    method:"put/get", //为get时候没有请求体，有query值为下，put时有body，没query
+    method:"put/get", 
     query:{
         thirdSession
     },
