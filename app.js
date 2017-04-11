@@ -35,6 +35,12 @@ router.post('/newAchi',require("./router/urpData/newAchi"),err);
 router.post('/oldAchi',require("./router/urpData/oldAchi"),err);
 router.post('/examDate',require("./router/urpData/examDate"),err);
 
+//小程序用的
+router.post('/wxapp/thirdSession',require('./router/wxapp/thirdSession'),err);
+router.post('/wxapp/checkBindUrp',require('./router/wxapp/checkBindUrp'),err);
+router.post('/wxapp/bindUrp',require('./router/wxapp/bindUrp'),err);
+router.post('/wxapp/oldAchi',require('./router/wxapp/oldAchi'),err);
+router.post('/wxapp/newAchi',require('./router/wxapp/newAchi'),err);
 
 app.use(router.routes());
 app.use(router.allowedMethods());

@@ -1,6 +1,6 @@
-var { appid, secret, cry } = require("./lib/config.wx");
+var { cry } = require("./lib/util");
+var {appid,secret}=require('../../wxappConfig');
 var request = require("superagent");
-var qs = require("qs");
 
 module.exports = async function(ctx, next) {
     try {
@@ -26,7 +26,6 @@ module.exports = async function(ctx, next) {
                 openid,
                 "session_key": session_key
             };
-            // var count=await
             var saved = await ctx.db.Wxapp.update({ openid },
                 data, { upsert: true }
             ).exec();
@@ -39,7 +38,6 @@ module.exports = async function(ctx, next) {
             }
         }
     } catch (error) {
-        console.log(error);
         await next();
     }
 }

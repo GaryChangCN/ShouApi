@@ -262,6 +262,128 @@
 
 ## 小程序接口
 
+## 获取thirdSession
+
+```
+{
+    url:"/api/wxapp/thirdSession",
+    method:"POST",
+    data:{
+        code
+    }
+}
+//res
+{
+    err:,
+    data:{
+        thirdSession
+    }
+}
+```
+
+## 检查是否绑定了urp
+
+```
+{
+    url:"/api/wxapp/checkBindUrp",
+    method:"GET",
+    query:{
+        thirdSession
+    }
+}
+//res
+{
+    err,
+    data:{
+        bindUrp:true/false
+    }
+}
+```
+## 绑定urp
+
+```
+{
+    url:"/api/wxapp/bindUrp",
+    method:"POST",
+    data:{
+        username,
+        urppassword,
+        thirdSession
+    }
+}
+//res
+{
+    err,
+    data:{
+        pass:true/false
+    }
+}
+```
+
+### 获取最新成绩
+
+
+### 获取最新成绩
+
+```
+{
+    url:"/api/wxapp/newAchi",
+    method:"GET",
+    query:{
+        thirdSession
+    }
+}
+//res
+{
+    err:"",//false or 暂时没有出成绩
+     //没有出成绩数组为空
+    data:{
+        ret:[
+            {
+                kch:"课程号",
+                kxh:"课序号",
+                kcm:"课程名",
+                kcywm:"课程英文名",
+                xf:"学分",
+                kcsx:"课程属性",
+                cj:"成绩"
+            }
+        ],
+        pass:true/false
+    }
+}
+```
+### 获取以前成绩
+
+```
+{
+    url:"/api/oldAchi",
+    method:"GET",
+    query:{
+        thirdSession,
+        type:"cache/fresh"
+    }
+}
+//res
+{
+    data:{
+        pass:true/false, //账号密码是否正确
+        type:"cache/fresh",
+        ret:[
+            {
+                title:"第几学期",
+                content:[
+                    [
+                        "课程号","课序号","课程名","英文名","学分","课程性质","成绩"
+                    ]
+                ]
+            }
+        ]
+    },
+    err:true/false
+}
+```
+
 ### 发送反馈信息
 
 ```
