@@ -1,4 +1,4 @@
-var session2userInfo=require("./lib/session2userInfo");
+var session2userInfo=require("../lib/session2userInfo");
 
 module.exports = async function(ctx, next) {
     try {

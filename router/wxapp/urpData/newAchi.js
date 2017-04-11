@@ -1,11 +1,11 @@
-var s2u=require('./lib/session2userInfo');
+var s2u=require('../lib/session2userInfo');
 
 module.exports = async function(ctx, next) {
     try {
-        var { thirdSession,type } = ctx.query;
+        var { thirdSession } = ctx.query;
         var {username,urppassword}=await s2u(thirdSession);
         if (username) {
-            return require('../urpData/lib/oldAchiCore')(ctx, next, username,urppassword,type);
+            return require('../urpData/lib/newAchiCore')(ctx, next, username,urppassword);
         } else {
             ctx.body = {
                 data:{

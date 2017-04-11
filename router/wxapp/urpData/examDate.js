@@ -1,4 +1,4 @@
-var s2u = require('./lib/session2userInfo');
+var s2u = require('../lib/session2userInfo');
 module.exports = async function(ctx, next) {
     try {
         var { thirdSession } = ctx.query;

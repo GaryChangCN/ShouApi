@@ -36,15 +36,15 @@ router.post('/oldAchi',require("./router/urpData/oldAchi"),err);
 router.post('/examDate',require("./router/urpData/examDate"),err);
 
 //小程序用的
-router.post('/wxapp/thirdSession',require('./router/wxapp/thirdSession'),err);
-router.get('/wxapp/checkBindUrp',require('./router/wxapp/checkBindUrp'),err);
-router.post('/wxapp/bindUrp',require('./router/wxapp/bindUrp'),err);
-router.post('/wxapp/unBindUrp',require('./router/wxapp/unBindUrp'),err);
-router.get('/wxapp/oldAchi',require('./router/wxapp/oldAchi'),err);
-router.get('/wxapp/newAchi',require('./router/wxapp/newAchi'),err);
-router.get('/wxapp/curri',require('./router/wxapp/curri'),err);
-router.get('/wxapp/infoPlus',require('./router/wxapp/infoPlus'),err);
-router.get('/wxapp/examDate',require('./router/wxapp/examDate'),err);
+router.post('/wxapp/thirdSession',require('./router/wxapp/urpData/thirdSession'),err);
+router.get('/wxapp/checkBindUrp',require('./router/wxapp/urpData/checkBindUrp'),err);
+router.post('/wxapp/bindUrp',require('./router/wxapp/urpData/bindUrp'),err);
+router.post('/wxapp/unBindUrp',require('./router/wxapp/urpData/unBindUrp'),err);
+router.get('/wxapp/oldAchi',require('./router/wxapp/urpData/oldAchi'),err);
+router.get('/wxapp/newAchi',require('./router/wxapp/urpData/newAchi'),err);
+router.get('/wxapp/curri',require('./router/wxapp/urpData/curri'),err);
+router.get('/wxapp/infoPlus',require('./router/wxapp/urpData/infoPlus'),err);
+router.get('/wxapp/examDate',require('./router/wxapp/urpData/examDate'),err);
 
 router.post('/wxapp/feedBack',require('./router/wxapp/wx/feedback'),err);
 var getAvatar=require('./router/wxapp/wx/avatar/get');

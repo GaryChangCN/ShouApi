@@ -1,5 +1,5 @@
-var { cry } = require('./lib/util');
-var validUrpLogin = require('../../lib/core/validUrpLogin');
+var { cry } = require('../lib/util');
+var validUrpLogin = require('../../../lib/core/validUrpLogin');
 
 module.exports = async function(ctx, next) {
     try {

@@ -1,5 +1,5 @@
-var { cry } = require("./lib/util");
-var {appid,secret}=require('../../wxappConfig');
+var { cry } = require("../lib/util");
+var {appid,secret}=require('../../../wxappConfig');
 var request = require("superagent");
 
 module.exports = async function(ctx, next) {

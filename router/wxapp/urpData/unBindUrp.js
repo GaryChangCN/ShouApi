@@ -1,4 +1,4 @@
-var { cry } = require('./lib/util');
+var { cry } = require('../lib/util');
 
 module.exports = async function(ctx, next) {
     try {
