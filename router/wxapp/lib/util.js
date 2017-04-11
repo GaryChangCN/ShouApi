@@ -1,6 +1,7 @@
+var {key}=require('../../../wxappConfig');
+
 function cry(_id){
     var crypto=require("crypto");
-    var key="key ！！！";
     var afterRandom=parseInt(Math.random()*1000)+_id;
     var encode=function(){
         var cipher=crypto.createCipher('aes-256-cfb',key);
@@ -22,7 +23,5 @@ function cry(_id){
 
 
 module.exports={
-    appid:"appid  ！！！！",
-    secret:"secret ！！！！",
     cry
 }

@@ -10,8 +10,7 @@ api.js
 *.webp
 /.vscode
 /v1.0/ser/shouTemp.txt
-/lib/config.wx.js
-/router/wxapp/lib/config.wx.js
 /log/log.log.1
 /log/log.log.2
 /log/log.log.3
+wxappConfig.js

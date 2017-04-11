@@ -14,7 +14,7 @@ module.exports = async function(ctx, next, username, urppassword, type = "cache"
                     var { classData } = data;
                     ctx.body = {
                         data: {
-                            classData,
+                            ret:classData,
                             pass,
                             type: "cache"
                         }
@@ -39,7 +39,7 @@ async function fetchFresh(ctx, username, urppassword) {
         ctx.db.Curr.update({ username }, { $set: { classData } }, { upsert: true }).exec();
         ctx.body = {
             data: {
-                classData: ret,
+                ret,
                 pass,
                 type: "fresh"
             }
