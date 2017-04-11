@@ -518,7 +518,6 @@
         thirdSession
     },
     data:{
-        thirdSession,
         avatar
     }
 }
@@ -527,6 +526,38 @@
     err:"",
     data:{
         avatar:true
+    }
+}
+```
+
+## 消息通知
+
+当要标记某条消息为已读时候，在body中传入 msgId 字段，
+
+```
+{
+    url:"/api/wxapp/msg",
+    method:"put/get",
+    query:{
+        thirdSession
+    },
+    data:{
+        msgId
+    }
+}
+//res
+{
+    err:,
+    data:{
+        update:true, //仅PUT请求
+        pass:true/false，
+        ret:[  //仅GET请求
+            {
+                msgId:"",
+                title:"",
+                read:false/true
+            }
+        ]
     }
 }
 ```

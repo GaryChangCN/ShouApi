@@ -10,6 +10,7 @@ module.exports=async function(ctx,thirdSession){
         return {
             username,
             urppassword:urpPassword,
+            _id,
             bindUrp:true
         };
     }else{
