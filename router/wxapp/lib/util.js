@@ -2,7 +2,7 @@ var {key}=require('../../../wxappConfig');
 
 function cry(_id){
     var crypto=require("crypto");
-    var afterRandom=parseInt(Math.random()*1000)+_id;
+    var afterRandom=parseInt(Math.random()*1000)+_id.toString();
     var encode=function(){
         var cipher=crypto.createCipher('aes-256-cfb',key);
         var crypted=cipher.update(afterRandom,'utf8','hex');
