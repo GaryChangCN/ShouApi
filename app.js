@@ -25,10 +25,10 @@ var err = require("./router/err");
 router.prefix('/api');
 router.post('/login',require("./router/login"),err);
 router.post('/address',require("./router/address"),err);
+router.post('/searchClass',require("./router/other/searchClass"),err);
 router.get('/newslist',require("./router/news/list"),err);
 router.get('/newsDetail',require("./router/news/detail"),err);
 router.get('/schoolDate',require("./router/other/schoolDate"),err);
-router.get('/searchClass',require("./router/other/searchClass"),err);
 
 //传统urp
 router.post('/curri',require("./router/urpData/curri"),err);

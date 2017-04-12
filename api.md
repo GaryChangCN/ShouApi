@@ -287,11 +287,9 @@
 ```
 {
     url:'/api/searchClass',
-    method:"GET",
-    query:{  //三者必填一个否则返回err
-        kch:"课程号",
-        kcm:"课程名",  //课程名可为模糊搜索但字段长度要大于4
-        js:"教师"
+    method:"POST",
+    data:{
+        keywords
     }
 }
 //res
