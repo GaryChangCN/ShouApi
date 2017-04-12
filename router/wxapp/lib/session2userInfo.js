@@ -1,7 +1,7 @@
 var {cry}=require("./util");
 var db=require('../../../lib/db');
 
-module.exports=async function(ctx,thirdSession){
+module.exports=async function(thirdSession){
     var _id = cry().decode(thirdSession);
     var data = await db.Wxapp.findOne({ _id },'username').exec();
     if(data.username){

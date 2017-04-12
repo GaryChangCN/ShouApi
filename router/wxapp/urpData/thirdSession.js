@@ -38,6 +38,7 @@ module.exports = async function(ctx, next) {
             }
         }
     } catch (error) {
+        console.log(error);
         await next();
     }
 }

@@ -7,10 +7,12 @@ module.exports = async function(ctx, next) {
             var _id = cry().decode(thirdSession);
             var res = await ctx.db.Wxapp.findOne({ _id }, `username avatar`).exec();
             if (res) {
-                var { avatar } = res;
+                var { avatar,username } = res;
                 ctx.body = {
-                    avatar,
-                    pass: true
+                    data:{
+                        avatar:avatar||username,
+                        pass: true
+                    }
                 }
             } else {
                 ctx.body = {

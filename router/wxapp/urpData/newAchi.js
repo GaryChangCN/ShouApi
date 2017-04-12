@@ -5,7 +5,7 @@ module.exports = async function(ctx, next) {
         var { thirdSession } = ctx.query;
         var {username,urppassword}=await s2u(thirdSession);
         if (username) {
-            return require('../urpData/lib/newAchiCore')(ctx, next, username,urppassword);
+            return require('../../urpData/lib/newAchiCore')(ctx, next, username,urppassword);
         } else {
             ctx.body = {
                 data:{
