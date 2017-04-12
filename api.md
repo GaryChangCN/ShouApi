@@ -260,9 +260,33 @@
 }
 ```
 
+### 获取校历
+
+```
+{
+    url:"/api/schoolDate",
+    method:"GET"
+}
+//res
+{
+    err,
+    data:{
+        schoolDate:[
+            {
+                title:"2016-2017",
+                pic:[
+                    "图片1","图片2"
+                ]
+            }
+        ]
+    }
+}
+```
+
+
 ## 小程序接口
 
-## 获取thirdSession
+### 获取thirdSession
 
 ```
 {
@@ -281,7 +305,7 @@
 }
 ```
 
-## 检查是否绑定了urp
+### 检查是否绑定了urp
 
 ```
 {
