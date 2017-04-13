@@ -7,7 +7,7 @@ module.exports=async function (ctx,next){
 		var {data}=await fetchMainData(url,analysis);
 		ctx.body={
 			data:{
-				schooolDate:data.ret
+				schoolDate:data.ret
 			}
 		}
 	} catch (error) {
