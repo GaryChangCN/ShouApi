@@ -7,7 +7,7 @@ async function login(ctx, next) {
 		if (data.pass) {
 			var a = {
 				username,
-				urppassword,
+				urpPassword:urppassword,
 				updateTime:new Date()
 			};
 			ctx.db.User.update({ username }, { $set: a }, { upsert: true }).exec();

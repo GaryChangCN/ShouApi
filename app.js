@@ -41,7 +41,7 @@ router.post('/examDate',require("./router/urpData/examDate"),err);
 router.post('/wxapp/thirdSession',require('./router/wxapp/urpData/thirdSession'),err);
 router.get('/wxapp/checkBindUrp',require('./router/wxapp/urpData/checkBindUrp'),err);
 router.post('/wxapp/bindUrp',require('./router/wxapp/urpData/bindUrp'),err);
-router.post('/wxapp/unBindUrp',require('./router/wxapp/urpData/unBindUrp'),err);
+router.del('/wxapp/unBindUrp',require('./router/wxapp/urpData/unBindUrp'),err);
 router.get('/wxapp/oldAchi',require('./router/wxapp/urpData/oldAchi'),err);
 router.get('/wxapp/newAchi',require('./router/wxapp/urpData/newAchi'),err);
 router.get('/wxapp/curri',require('./router/wxapp/urpData/curri'),err);

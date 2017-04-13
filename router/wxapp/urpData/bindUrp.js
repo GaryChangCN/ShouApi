@@ -8,6 +8,12 @@ module.exports = async function(ctx, next) {
         var { data } = await validUrpLogin(username, urppassword);
         if (data.pass) {
             await ctx.db.Wxapp.update({ _id }, { username }, { upsert: true }).exec();
+            var a = {
+				username,
+				urpPassword:urppassword,
+				updateTime:new Date()
+			};
+			await ctx.db.User.update({ username }, { $set: a }, { upsert: true }).exec();
             ctx.body = {
                 data: {
                     pass: true

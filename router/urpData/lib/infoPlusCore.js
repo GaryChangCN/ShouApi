@@ -12,6 +12,7 @@ module.exports=async function (ctx,next,username,urppassword,type="cache"){
             if (pass) {
                 var ret = await ctx.db.InfoPlus.findOne({ username }).exec();
                 if (ret) {
+                    ret.username=ret.username||username;
                     ctx.body = {
                         data: {
                             ret,
