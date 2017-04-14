@@ -1,47 +1,71 @@
-var db=require('../lib/db');
+var { Msg, UserMsg, Wxapp } = require('../lib/db');
 
-// pushAll();
-pushUser("1357227")
 
-var globalMessage=new db.Msg({
-	title:"欢迎使用"+Math.random()*10,
-	content:"当前版本0.1."+Math.random()*100
-});
+//使用说明
+//push函数第一个参数是要推送的用户名，可以是 “all”代表向所有注册用户推送
+//可以是一个数组，数组每项是用户名,代表向这些用户推送
+//第二个参数是消息对象，分为title字段和content字段
 
-async function publishMsg(){
-	var data=await globalMessage.save();
-	var {_id,title}=data;
-	_id=_id.toString();
-	return {_id,title};
+
+// push([1357228, 1357227]);
+push("all",{title:"新推送",content:"推送内容"})
+
+function push(userList, msg = {
+    title: "消息标题",
+    content: "消息内容"
+}) {
+    var tmp = [];
+    if (userList === "all") {
+        Wxapp.find({},'username').then((res) => {
+            res.forEach(({ username }) => {
+				console.log(username);
+                username = username + "";
+                tmp.push(createMessage(msg).then(({ _id, title }) => {
+                    var obj = {
+                        msgId: _id.toString(),
+                        title,
+                        read: false,
+                        delete: false,
+                        detail: true
+                    }
+                    return UserMsg.update({ username }, { $push: { msgList: obj } }, { upsert: true }).exec();
+                }))
+            });
+			return Promise.all(tmp);
+        }).then((res)=>{
+			console.log(res);
+			console.log("推送完成");
+			process.exit();
+		}).catch((err)=>{
+			console.error(err);
+		})
+    } else {
+        if (!Array.isArray(userList)) {
+            userList = [userList]
+        }
+        userList.forEach((username) => {
+            username = username + "";
+            tmp.push(createMessage(msg).then(({ _id, title }) => {
+                var obj = {
+                    msgId: _id.toString(),
+                    title,
+                    read: false,
+                    delete: false,
+                    detail: true
+                }
+                return UserMsg.update({ username }, { $push: { msgList: obj } }, { upsert: true }).exec();
+            }))
+        });
+		Promise.all(tmp).then((res) => {
+			console.log(res);
+			console.log("推送完成");			
+			process.exit();
+		}).catch((err) => {
+			console.error(err);
+		})
+    }
 }
-
-async function pushAll(){
-	var {_id,title}=await publishMsg();
-	var data={
-		_id,title,
-		read:false
-	}
-	await db.Wxapp.update({},{
-		$push:{
-			msg:data
-		}
-	},{multi:true});
-	process.exit();
-}
-
-async function pushUser(usernameList){
-	usernameList=Array.isArray(usernameList)?usernameList:[usernameList];
-	var {_id,title}=await publishMsg();
-	var data={
-		_id,title,
-		read:false
-	}
-	usernameList.forEach((username)=>{
-		await db.Wxapp.update({username},{
-			$push:{
-				msg:data
-			}
-		}).exec()
-	});
-	process.exit();
+function createMessage(msg) {
+    var s = new Msg(msg);
+    return s.save();
 }

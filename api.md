@@ -586,18 +586,41 @@
 }
 ```
 
-## 消息通知
-
-当要标记某条消息为已读时候，在body中传入 msgId 字段，
+## 获取消息通知
 
 ```
 {
     url:"/api/wxapp/msg",
-    method:"put/get",
+    method:"get",
     query:{
         thirdSession
-    },
+    }
+}
+//res
+{
+    err:,
     data:{
+        pass:true/false，
+        msgList:[
+            {
+                msgId:"", //消息_id与detail字段有关
+                title:"",
+                read:false/true,
+                detail:true/false   //这里detail为true时候才回有msgId字段，为false时代表无消息详情
+            }
+        ]
+    }
+}
+```
+
+## 标记消息已读/删除
+标记已读是put方法，删除是delete方法
+```
+{
+    url:"/api/wxapp/msg",
+    method:"put/delete",
+    query:{
+        thirdSession,
         msgId
     }
 }
@@ -605,15 +628,8 @@
 {
     err:,
     data:{
-        update:true, //仅PUT请求
         pass:true/false，
-        ret:[  //仅GET请求
-            {
-                msgId:"",
-                title:"",
-                read:false/true
-            }
-        ]
+        modify:true
     }
 }
 ```
@@ -633,7 +649,8 @@
     err,
     data:{
         title,
-        content
+        content,
+        tag
     }
 }
 ```

@@ -52,10 +52,11 @@ var getAvatar=require('./router/wxapp/wx/avatar/get');
 var updateAvatar=require('./router/wxapp/wx/avatar/update');
 var getMsg=require('./router/wxapp/wx/msg/get');
 var updateMsg=require('./router/wxapp/wx/msg/update');
+var deleteMsg=require('./router/wxapp/wx/msg/delete');
 
 router.post('/wxapp/feedBack',require('./router/wxapp/wx/feedback'),err);
 router.all('/wxapp/avatar',getAvatar,updateAvatar,err);
-router.all('/wxapp/msg',getMsg,updateMsg,err);
+router.all('/wxapp/msg',getMsg,updateMsg,deleteMsg,err);
 router.get('/wxapp/msgDetail',require('./router/wxapp/wx/msg/detail'),err);
 
 app.use(router.routes());

@@ -4,13 +4,26 @@ module.exports = async function(ctx, next) {
         try {
             var { thirdSession } = ctx.query;
 			var _id = cry().decode(thirdSession);
-			var data=await ctx.db.Wxapp.findOne({_id},'msg').exec();
-			if(data){
-				var {msg}=data;
-				ctx.body={
-					data:{
-						ret:msg,
-						pass:true
+			var {username}=await ctx.db.Wxapp.findOne({_id},'username').exec();
+			if(username){
+				var msgList=await ctx.db.UserMsg.findOne({username}).exec();
+				if(!msgList){
+					ctx.body={
+						data:{
+							pass:true,
+							msgList:[]
+						}
+					}
+				}else{
+					ctx.body={
+						data:{
+							pass:true,
+							msgList:msgList.filter((item)=>{
+								if(!item.detele){
+									return true
+								}
+							})
+						}
 					}
 				}
 			}else{

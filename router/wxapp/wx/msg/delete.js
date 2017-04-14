@@ -1,6 +1,6 @@
 var {cry}=require('../../lib/util');
 module.exports = async function(ctx, next) {
-    if (ctx.method.toUpperCase() == "PUT") {
+    if (ctx.method.toUpperCase() == "DELETE") {
         try {
             var { thirdSession,msgId } = ctx.query;
 			var {msgId}=ctx.request.body;
@@ -10,7 +10,7 @@ module.exports = async function(ctx, next) {
 				var msgList=await ctx.db.UserMsg.findOne({username}).exec();
 				msgList.map((item)=>{
 					if(item.msgId==msgId){
-						item.read=true;
+						item.delete=true;
 					}
 					return item;
 				});
