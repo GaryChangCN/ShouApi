@@ -6,24 +6,22 @@ module.exports = async function(ctx, next) {
 			var _id = cry().decode(thirdSession);
 			var {username}=await ctx.db.Wxapp.findOne({_id},'username').exec();
 			if(username){
-				var msgList=await ctx.db.UserMsg.findOne({username}).exec();
-				if(!msgList){
-					ctx.body={
-						data:{
-							pass:true,
-							msgList:[]
+				var {msgList}=await ctx.db.UserMsg.findOne({username}).exec();
+				if(msgList){
+					var tmp=[];
+					msgList.forEach((item)=>{
+						if(!item.delete){
+							tmp.push(item);
 						}
-					}
+					});
+					msgList=tmp;
 				}else{
-					ctx.body={
-						data:{
-							pass:true,
-							msgList:msgList.filter((item)=>{
-								if(!item.detele){
-									return true
-								}
-							})
-						}
+					msgList=[];
+				}
+				ctx.body={
+					data:{
+						pass:true,
+						msgList
 					}
 				}
 			}else{
@@ -34,6 +32,7 @@ module.exports = async function(ctx, next) {
 				}
 			}
         } catch (error) {
+			console.log(error);
             await next();
         }
     } else {
