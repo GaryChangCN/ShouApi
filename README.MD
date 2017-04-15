@@ -1,20 +1,26 @@
 ## 海大新媒体
 
-## 地址 
+上海海洋大学新型URP查询暨校园生活服务端（api端）
 
-## 更新
-
-本项目正在重写，新技能栈 `vue`全家桶+`node.js`+`koajs`+`mongodb` 使用`cordova`或者`weex`实现移动端app，可能会使用`electron`。
-**目前正在开发小程序版本**
-
-## 功能
-上海海洋大学新型URP查询暨校园生活网页
+**目前前端只有小程序版** 
+[海大新媒体小程序]("https://github.com/GaryChangCN/ShouMedia-wxapp")
 
 [API文档](./api.md);
 
+## 使用
+
+```
+git clone
+npm install
+```
+
+如果你不需要使用小程序接口，可以再app.js里面注释掉小程序接口部分，
+如果使用则需要修改小程序配置文件在根目录的wxappConfig.js里，格式在wxappConfig.example.js中
+
 ## 更新日志
 
-
+### 2017-3-15
+接口基本完成
 ### 2017-4-10
 后台“通用部分”重构完成，项目请求urp模块和返回信息完全解耦，添加本地验证和在线验证urp账号密码链
 ### 2017-4-09
@@ -42,3 +48,7 @@ todo:校园卡照片
 ## API
 
 [文档](/server/api.md)
+
+## LICENSE
+
+[license](/LICENSE)

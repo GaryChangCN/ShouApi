@@ -37,7 +37,7 @@ router.post('/newAchi',require("./router/urpData/newAchi"),err);
 router.post('/oldAchi',require("./router/urpData/oldAchi"),err);
 router.post('/examDate',require("./router/urpData/examDate"),err);
 
-//小程序用的
+//小程序api接口开始
 router.post('/wxapp/thirdSession',require('./router/wxapp/urpData/thirdSession'),err);
 router.get('/wxapp/checkBindUrp',require('./router/wxapp/urpData/checkBindUrp'),err);
 router.post('/wxapp/bindUrp',require('./router/wxapp/urpData/bindUrp'),err);
@@ -58,6 +58,8 @@ router.post('/wxapp/feedBack',require('./router/wxapp/wx/feedback'),err);
 router.all('/wxapp/avatar',getAvatar,updateAvatar,err);
 router.all('/wxapp/msg',getMsg,updateMsg,deleteMsg,err);
 router.get('/wxapp/msgDetail',require('./router/wxapp/wx/msg/detail'),err);
+
+//小程序api接口结束
 
 app.use(router.routes());
 app.use(router.allowedMethods());
