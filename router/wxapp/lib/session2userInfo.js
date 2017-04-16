@@ -4,7 +4,7 @@ var db=require('../../../lib/db');
 module.exports=async function(thirdSession){
     var _id = cry().decode(thirdSession);
     var data = await db.Wxapp.findOne({ _id },'username').exec();
-    if(data.hasOwnProperty("username")){
+    if(data&&data.hasOwnProperty("username")){
         var {username}=data;
         var {urpPassword}= await db.User.findOne({username},'urpPassword').exec();
         return {
