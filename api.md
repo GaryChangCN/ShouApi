@@ -593,7 +593,8 @@
     url:"/api/wxapp/msg",
     method:"get",
     query:{
-        thirdSession
+        thirdSession,
+        type:"unread/list"
     }
 }
 //res
@@ -601,6 +602,7 @@
     err:,
     data:{
         pass:true/false，
+        count:23,//当type为unread时候只有count字段，表示未读消息数
         msgList:[
             {
                 msgId:"", //消息_id与detail字段有关

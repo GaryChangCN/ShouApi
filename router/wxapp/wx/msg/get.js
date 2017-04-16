@@ -2,7 +2,7 @@ var {cry}=require('../../lib/util');
 module.exports = async function(ctx, next) {
     if (ctx.method.toUpperCase() == "GET") {
         try {
-            var { thirdSession } = ctx.query;
+            var { thirdSession , type} = ctx.query;
 			var _id = cry().decode(thirdSession);
 			var {username}=await ctx.db.Wxapp.findOne({_id},'username').exec();
 			if(username){
@@ -18,10 +18,25 @@ module.exports = async function(ctx, next) {
 				}else{
 					msgList=[];
 				}
-				ctx.body={
-					data:{
-						pass:true,
-						msgList
+				if(type=="unread"){
+					var count=0;
+					msgList.forEach((item)=>{
+						if(!item.read){
+							count++;
+						}
+					});
+					ctx.body={
+						data:{
+							pass:true,
+							count
+						}
+					}
+				}else{
+					ctx.body={
+						data:{
+							pass:true,
+							msgList
+						}
 					}
 				}
 			}else{

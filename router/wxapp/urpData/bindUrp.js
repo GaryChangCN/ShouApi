@@ -9,11 +9,15 @@ module.exports = async function(ctx, next) {
         if (data.pass) {
             await ctx.db.Wxapp.update({ _id }, { username }, { upsert: true }).exec();
             var a = {
-				username,
-				urpPassword:urppassword,
-				updateTime:new Date()
-			};
-			await ctx.db.User.update({ username }, { $set: a }, { upsert: true }).exec();
+                username,
+                urpPassword: urppassword,
+                updateTime: new Date()
+            };
+            var msgList = [
+                { msgId: "", title: "欢迎使用海大新媒体微信小程序,目前你已经绑定urp信息，可以使用全部功能了", read: false, delete: false, detail: false }
+            ]
+            ctx.db.UserMsg.update({ username }, {msgList}, { upsert: true }).exec();
+            await ctx.db.User.update({ username }, { $set: a }, { upsert: true }).exec();
             ctx.body = {
                 data: {
                     pass: true
