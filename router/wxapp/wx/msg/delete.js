@@ -3,11 +3,10 @@ module.exports = async function(ctx, next) {
     if (ctx.method.toUpperCase() == "DELETE") {
         try {
             var { thirdSession,msgId } = ctx.query;
-			var {msgId}=ctx.request.body;
 			var _id = cry().decode(thirdSession);
 			var {username}=await ctx.db.Wxapp.findOne({_id},'username').exec();
 			if(username){
-				var msgList=await ctx.db.UserMsg.findOne({username}).exec();
+				var {msgList}=await ctx.db.UserMsg.findOne({username}).exec();
 				msgList.map((item)=>{
 					if(item.msgId==msgId){
 						item.delete=true;

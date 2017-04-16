@@ -1,7 +1,7 @@
 module.exports = async function(ctx, next) {
     try {
         var { msgId } = ctx.query;
-        var data = await ctx.Msg.findOne({ _id:msgId }).exec();
+        var data = await ctx.db.Msg.findOne({ _id:msgId }).exec();
         if (data) {
             var { title, content ,tag} = data;
             ctx.body = {
