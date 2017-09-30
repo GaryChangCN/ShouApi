@@ -12,6 +12,9 @@
 ```
 git clone
 npm install
+
+npm run dev // dev
+node app.js // prod
 ```
 
 如果你不需要使用小程序接口，可以再app.js里面注释掉小程序接口部分，
@@ -19,6 +22,8 @@ npm install
 
 ## 更新日志
 
+### 2017-9-30
+更改项目名
 ### 2017-3-15
 接口基本完成
 ### 2017-4-10

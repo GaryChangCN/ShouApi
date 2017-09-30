@@ -8,7 +8,7 @@ var { Msg, UserMsg, Wxapp } = require('../lib/db');
 
 
 // push([1357228, 1357227]);
-push("all",{title:"推送2314",content:"推送内容而我却二群翁二所大所"})
+push("all",{title:"推送2314",content:"推送内容"})
 
 function push(userList, msg = {
     title: "消息标题",
